@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Practice page</title>
+        <title>Home page</title>
         <link href="style.css" rel="stylesheet" type="text/css">
     </head>
     <body>
@@ -9,7 +9,6 @@
             <div class="menu">
                 <ul class="main-nav">
                     <li class="active"><a href="">HOME</a></li>
-                    <li><a href="">LOGIN</a></li>
                     <li><a href="">INFORMATION</a></li>
                     <li><a href="">CONTACT US</a></li>
                 </ul>
@@ -22,8 +21,46 @@
                     <a href="" class="btn btn-one">Watch Video</a>
                     <a href="" class="btn btn-two">Find out more</a>
                 </div>
+
+                <div class="login-page">
+                    <div class="form">
+                            <form class="register-form">
+                                    <h2>Sign Up</h2>
+                                    <p>Username</p>
+                                    <input type="text" name="" placeholder="Enter Username">
+                                    <p>Password</p>
+                                    <input type="password" name="" placeholder="Enter Password">
+                                    <p>E-mail</p>
+                                    <input type="email" name="" placeholder="Enter E-mail">
+                                    <button>Create</button>
+                                    <p class="register"> Already Registered? <a href="#"> Login </a></p>
+                            </form>  
+                         
+                         <form class="login-form">
+                                <h2>Login</h2>
+                                <p>Username</p>
+                                <input type="text" name="" placeholder="Enter Username">
+                                <p>Password</p>
+                                <input type="password" name="" placeholder="Enter Password">
+                                <button>Login</button>
+                                <p class="register"> Not Registered? <a href="#"> Register </a></p>
+                                <a href="#">Forgotten your password?</a>
+                                
+                         </form> 
+                     </div>
+                </div>
             </div>
+
+            <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+
+            <script>
+                $(".register a").on('click',function(){
+                $("form").animate({height: "toggle",opacity:"toggle"},"slow");
+                })
+            </script>
+
+            
         </header>
-    
+        
     </body>
-</html>
+ </html>

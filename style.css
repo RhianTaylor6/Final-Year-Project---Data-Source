@@ -1,6 +1,6 @@
 *
 {
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
     
 }
@@ -8,7 +8,7 @@
 header
 {
     background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)) ,url(/Users/rhiantaylor/Desktop/IMG_7864.jpeg);
-    height: 100vh;
+    height: 150vh;
     background-size: cover;
     background-position: center;
 
@@ -32,7 +32,7 @@ header
     color: aliceblue;
     text-decoration: none;
     padding: 5px 20px;
-    font-family: cursive;
+    font-family: fantasy;
     font-size: 15px;
 }
 
@@ -54,10 +54,11 @@ header
 
 .FY 
 {
-    position: absolute;
+    
     width: 1200px;
     margin-left: 0px;
     margin-top: 0px;
+    position: absolute;
 }
 
 h1
@@ -66,14 +67,15 @@ h1
     text-transform: uppercase;
     font-size: 70px;
     text-align: center;
-    margin-top: 100px;
-    font-family: cursive;
+    margin-top: 30px;
+    font-family: fantasy;
 }
 
 .button
 {
     margin-top: 30px;
     margin-left: 440px;
+    
 }
 
 .btn
@@ -84,8 +86,7 @@ h1
     margin-right: 5px;
     font-size: 10px;
     text-transform: uppercase;
-    
-
+   
 }
 
 .btn:hover
@@ -98,12 +99,125 @@ h1
 .btn-one
 {
 
-    font-family: cursive;
+    font-family: fantasy;
 }
 
 .btn-two
 {
-    font-family: cursive;
+    font-family: fantasy;
 }
+
+
+
+.login-page
+{
+    width: 360px;
+    padding:10% 0 0;
+    margin: auto;
+
+    
+}
+
+.form
+{
+    z-index: 1;
+    max-width: 360px;
+    position: relative;
+    margin: 0 auto 100px;
+    padding: 45px;
+    box-sizing: border-box;
+    border: 1px solid aliceblue;
+}
+
+h2
+{
+    color:aliceblue;
+    text-transform: uppercase;
+    font-size: 20px;
+    text-align: center;
+    font-family: fantasy;
+
+
+}
+
+.form p
+{
+    margin: 0;
+    padding-top: 30px;
+    font-weight: bold;
+    color: aliceblue;
+    
+}
+
+.form input
+{
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.form input[type="text"], input[type="password"], input[type="email"]
+{
+    border: none;
+    border-bottom: 1px solid aliceblue;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: aliceblue;
+    font-size: 16px;
+}
+
+.form button
+{
+    border: none;
+    outline: none;
+    height: 50px;
+    width: 100%;
+    background: transparent;
+    font-size: 18px;
+    border-radius: 20px;
+    color: aliceblue;
+    border: 1px solid aliceblue;
+    font-weight: bold;
+    padding: 15px;
+    
+}
+
+.form button:hover
+{
+    background-color: darkgrey;
+    transition: all 0.5s ease-in;
+    cursor: pointer;
+
+}
+
+.form .register
+{
+    margin: 15px 0 0;
+    color: aliceblue;
+    font-size: 12px;
+}
+
+.form a
+{
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 20px;
+    color: darkgrey;
+}
+
+.form a:hover
+{
+    color:aliceblue;
+}
+
+.form .register-form
+{
+    display: none;
+
+}
+
+
+
 
 
