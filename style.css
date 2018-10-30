@@ -114,8 +114,8 @@ h1
     width: 360px;
     padding:10% 0 0;
     margin: auto;
-
     
+     
 }
 
 .form
@@ -127,6 +127,8 @@ h1
     padding: 45px;
     box-sizing: border-box;
     border: 1px solid aliceblue;
+    background-color: rgba(92, 89, 89, 0.5);
+
 }
 
 h2
