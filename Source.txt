@@ -3,3 +3,6 @@ https://www.fda.gov/downloads/Drugs/DevelopmentApprovalProcess/UCM071118.pdf
 
 FDA orange book - searh for approval dates;
 https://www.accessdata.fda.gov/scripts/cder/ob/index.cfm
+
+FDA Orange book files compressed under additional resources;
+https://www.fda.gov/Drugs/InformationOnDrugs/ucm129662.htm
