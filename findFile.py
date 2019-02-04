@@ -23,8 +23,8 @@ def get_link_from_fda():
         if "Orange Book Data Files (compressed)" in str(link): #checking each a tag for the target file
             return str('https://www.fda.gov' + str(link).split('"')[1])
 
+call(['rm','-r','tmpfda*']) #removing any files starting with with tmpfda so we don't have multiple copies
 urllib.request.urlretrieve(get_link_from_fda(),"tmpfda.zip")# retrieveing the file, 
-call(['rm','-r','tmpfda*']) #removing any files starting with with tmpfda so we don't hav multipl copies
 call(['unzip', 'tmpfda.zip', '-d', 'tmpfdazip'])#unzipping the new copy
 
 
