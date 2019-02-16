@@ -1,0 +1,309 @@
+*
+{
+    margin: 0 auto;
+    padding: 0;
+    background-color: #837A7C;
+    
+}
+
+header
+{
+    /*background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)) ,url(/bg_img.jpeg);*/
+    height:  200vh;
+    background-size: cover;
+    background-position: center; 
+    /*background-color: #837A7C;*/
+    
+
+}
+
+.main-nav
+{
+    list-style: none;
+    margin-top: 0px;
+    text-align: center;
+}
+
+.main-nav li
+{
+    margin-top: 30px;
+    display: inline-block;
+}
+
+.main-nav li a
+{
+    color: #423538;
+    text-decoration: none;
+    padding: 5px 30px;
+    font-family: oxygen;
+    font-size: 15px;
+}
+
+.main-nav li.active a
+{
+    border: 1px solid #423538;
+}
+
+.main-nav li a:hover
+{
+    border: 1px solid #A27B82;
+}
+
+.menu
+{
+    max-width: 100% /*1200px*/;
+    margin: auto;
+}
+
+.FY 
+{
+    
+    width: 100% /*1200px*/;
+    margin-left: 0px;
+    margin-top: 0px;
+    position: absolute;
+    
+}
+
+h1
+{
+    color: #423538;
+    text-transform: uppercase;
+    font-size: 70px;
+    text-align: center;
+    margin-top: 30px;
+    font-family: oxygen; 
+}
+
+h2
+{
+    color:#5A4D4F;
+    text-transform: uppercase;
+    font-size: 18px;
+    text-align: center;
+    font-family: oxygen;
+}
+
+h3
+{
+    color: #837A7C;
+    text-transform: uppercase;
+    font-size: 18px;
+    margin-left: 20px;
+    font-family: oxygen;
+}
+
+h4
+{
+    color: #A27B82;
+    text-transform: uppercase;
+    font-size: 18px;
+    margin-left: 20px;
+    font-family: oxygen;
+}
+
+.my-button
+{
+    margin-top: -7.5%;
+    margin-left: 2.5% ;
+    position: absolute;
+    
+    
+}
+
+.my-button:hover
+{
+    border: 1px solid #423538;
+    padding: 10px 35px;
+    color: #423538;
+    margin-right: 5px;
+    font-size: 10px;
+    text-transform: uppercase;
+    font-family: oxygen;
+   
+}
+
+.my-button
+{
+    background-color: #A27B82;
+    transition: all 0.5s ease-in;
+    border: 1px solid #A27B82;
+    font-family: oxygen;
+
+}
+
+.btn-one
+{
+
+    font-family: oxygen;
+}
+
+.btn-two
+{
+    font-family: oxygen;
+}
+
+.login-page
+{
+    width: 360px;
+    padding:10% 0 0;
+    margin: auto;   
+}
+
+.form
+{
+    z-index: 1;
+    max-width: 360px;
+    position: relative;
+    margin: 0 auto 100px;
+    padding: 45px;
+    box-sizing: border-box;
+    border: 1px solid #726568;
+    background-color:#726568;
+
+}
+
+.form p
+{
+    margin: 0;
+    padding-top: 30px;
+    font-weight: bold;
+    color: #5A4D4F;
+    
+}
+
+.form input
+{
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.form input[type="text"], input[type="password"], input[type="email"]
+{
+    border: none;
+    border-bottom: 1px solid #423538;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #5A4D4F;
+    font-size: 16px;
+}
+
+.form button
+{
+    border: none;
+    outline: none;
+    height: 50px;
+    width: 100%;
+    background: transparent;
+    font-size: 18px;
+    border-radius: 20px;
+    color: #423538;
+    border: 1px solid #423538;
+    font-weight: bold;
+    padding: 15px;
+    
+}
+
+.form button:hover
+{
+    background-color: #A27B82;
+    transition: all 0.5s ease-in;
+    cursor: pointer;
+
+}
+
+.form .register
+{
+    margin: 15px 0 0;
+    color: #5A4D4F;
+    font-size: 12px;
+}
+
+.form a
+{
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 20px;
+    color: #5A4D4F;
+}
+
+.form a:hover
+{
+    color:#A27B82;
+}
+
+.form .register-form
+{
+    display: none;
+
+}
+
+.data-gathering
+{
+    background-color: #726568;
+    height: 33%;
+    width: 100%;
+    
+}
+
+.data-storage
+{
+    background-color: #5A4D4F;
+    height: 33%;
+    width: 100%;
+    
+}
+
+.data-visualisation
+{
+    background-color: #423538;
+    height: 33%;
+    width: 100%;
+    
+}
+
+.vid1
+{
+    padding: 5px 20px 20px 5px;
+}
+
+.post-img
+{
+    padding: 10px 20px 20px 10px;
+    
+}
+
+.description
+{
+    color: #837A7C;
+    padding: 2%;
+    font-family: oxygen;
+    font-size: 16px;
+    display: inline-block;
+    vertical-align: top;  
+}
+
+.card-text
+{
+    color: #423538;
+    padding: 2%;
+    font-family: oxygen;
+    font-size: 16px;
+    display: inline-block;
+    vertical-align: top;  
+}
+
+.dropdown
+{
+    margin-top: 10px;
+}
+
+.card-customise1
+{
+    background-color: #5A4D4F;
+}
+
+
+
