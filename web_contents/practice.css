@@ -35,14 +35,14 @@ h3 {
 }
 
 h4 {
-    color: #A27B82;
+    color: #865f66;
     font-size: 18px;
     margin-left: 20px;
 
 }
 
 h5 {
-    color: #A27B82;
+    color: #865f66;
     font-size: 16px;
 
 }
@@ -121,3 +121,28 @@ p {
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
 }
 
+.box-container-thing {
+
+    background: #a9a2a4;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+    height: 450px;
+    padding: 2%;
+
+}
+
+.card {
+    background: #a9a2a4;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+
+.navbar {
+    background: #a9a2a4;
+}
+
+a{
+    color:  #865f66;
+}
+
+a:hover{
+    color:#dfd2d5;
+}
