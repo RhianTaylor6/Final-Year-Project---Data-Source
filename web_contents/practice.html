@@ -72,20 +72,21 @@
                         </div>
                     </form>
                 </div>
-                <div class="col-md-6 register-form" method="POST">
+                <div class="col-md-6 register-form" >
                     <h2>Register</h2>
-                    <form>
-                        <input type="text" class="form-control form-group" name="username" placeholder="Username" />
+                    <form action="/register" method="POST">
+                        <input type="text" class="form-control form-group" name="username" placeholder="Username" value="a" />
 
-                        <input type="text" class="form-control form-group" name="email" placeholder="Email" />
+                        <input type="text" class="form-control form-group" name="email" placeholder="Email" value="a@a.com"/>
 
-                        <input type="password" class="form-control form-group" name="password" placeholder="Password" />
+                        <input type="password" class="form-control form-group" name="password" placeholder="Password" value="a"/>
 
-                        <input type="password" class="form-control form-group" name="c-password" placeholder="Confirm Password" />
+                        <input type="password" class="form-control form-group" name="c-password" placeholder="Confirm Password" value="a" />
 
-                        <input type="text" class="form-control form-group" name="company" placeholder="Company" />
+                        <input type="text" class="form-control form-group" name="company" placeholder="Company" value="a"
+                        />
 
-                        <button class="form-group btn btn-sm my-button2 " type="submit">Register</button>
+                        <button class="form-group btn btn-sm my-button2 " >Create</button>
                         <!--<input type="submit" class="btnSubmit" value="Register" />-->
 
 
