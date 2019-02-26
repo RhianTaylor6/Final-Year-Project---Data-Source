@@ -15,7 +15,7 @@
     <link href="practice.css" rel="stylesheet" type="text/css">
 
 
-</head>
+</head> 
 
 <body>
     <div class="container-fluid">
@@ -75,20 +75,22 @@
                 <div class="col-md-6 register-form" >
                     <h2>Register</h2>
                     <form action="/register" method="POST">
-                        <input type="text" class="form-control form-group" name="username" placeholder="Username" value="a" />
+                        <input type="text" class="form-control form-group" name="f_name" placeholder="First Name" required minlength="2" maxlength="20" value="ab" />
 
-                        <input type="text" class="form-control form-group" name="email" placeholder="Email" value="a@a.com"/>
+                        <input type="text" class="form-control form-group" name="l_name" placeholder="Last Name" required minlength="2" maxlength="20" value="ab" />
 
-                        <input type="password" class="form-control form-group" name="password" placeholder="Password" value="a"/>
+                        <input type="text" class="form-control form-group" name="email" placeholder="Email" required value="a@a.com"/>
 
-                        <input type="password" class="form-control form-group" name="c-password" placeholder="Confirm Password" value="a" />
+                        <input type="password" class="form-control form-group" name="password" id="pass1" onkeyup="checkPasswordMatch();" placeholder="Password" required minlength="6" maxlength="12"value="abc123"/>
 
-                        <input type="text" class="form-control form-group" name="company" placeholder="Company" value="a"
-                        />
+                        <input type="password" class="form-control form-group"   name="c-password" id="pass2" onkeyup="checkPasswordMatch();" placeholder="Confirm Password" required minlength="6" maxlength="12"value="abc123" />
+                        
+                        <div class=" collapse" id="divCheckPasswordMatch"><p class="alert alert-danger">Passwords do not match</p></div>
 
-                        <button class="form-group btn btn-sm my-button2 " >Create</button>
+                        <input type="text" class="form-control form-group" name="company" placeholder="Company" required minlength="2" maxlength="20" value="ab"/>
+
+                        <button class="form-group btn btn-sm my-button2 " id="register-button"  >Create</button>
                         <!--<input type="submit" class="btnSubmit" value="Register" />-->
-
 
                         <p class="register form-group">Already Registered? <a href="#"> Login </a></p>
 
@@ -98,6 +100,33 @@
         </div>
 
     </div>
+
+    <script>
+            function checkPasswordMatch() {
+        var password = $("#pass1").val();
+        var confirmPassword = $("#pass2").val();
+
+        if (password != confirmPassword || confirmPassword != password){
+            $("#divCheckPasswordMatch").removeClass("collapse").addClass("expand");
+            $("#register-button").prop('disabled',true);
+        }
+        else{
+            $("#divCheckPasswordMatch").removeClass("expand").addClass("collapse");
+            $("#register-button").prop('disabled',false);
+        }
+
+    }
+    
+    </script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".close").click(function(){
+            $("#myAlert").alert('close');
+        });
+    });  
+    </script>
+    
 </body>
 
 </html>
