@@ -2,7 +2,7 @@ import flask
 
 app = flask.Flask(__name__, static_url_path='/web_contents/')
 
-app.config['SECRET KEY'] = '2f76c03428808188004157ebf4932088'
+app.secret_key = '2f76c03428808188004157ebf4932088'
 
 @app.route("/<path:path>")
 def serve_webpage(path):
@@ -21,8 +21,16 @@ def register_post():
     
     return '{},{},{},{},{},{}'.format(f_name, l_name, password, c_password, email, company)
 
-@app.route("/login", methods=["GET","POST"])
+@app.route("/login", methods=["POST", "GET"])
 def login():
-    return print(login)
+
+        email = flask.request.form['email-login']
+        password = flask.request.form['password-login']          
+        if(email == 'test@gmail.com' and password == 'test1'):
+            return flask.redirect('welcome.html')
+        else:
+            flask.flash('Login Unsuccessful')
+            return flask.redirect('failed-login.html')
+        
 
 app.run(debug=True, port=80)
