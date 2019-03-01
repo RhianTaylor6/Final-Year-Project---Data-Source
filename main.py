@@ -2,6 +2,8 @@ import flask
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import os
+import readFile
+import pandas as pd
 
 
 
@@ -93,6 +95,31 @@ class os_drug_data(db.Model):
 def serve_webpage(path):
     return flask.send_from_directory('./web_contents/', path)
 
+def populate_OS_db():
+    fda_data = readFile.createFDA_df
+    try:
+        for drug in fda_data.iterrows():
+            fda=os_drug_data(
+                Appl_No = fda_data['Appl_No'].values[drug],
+                Product_No = fda_data['Product_No'].values[drug],
+                Patent_No = fda_data['Patent_No'].values[drug],
+                Submission_Date = fda_data['Submission_Date'].values[drug],
+                Exclusivity_Code = fda_data['Exclusivity_Code'].values[drug],
+                Exclusivity_Date = fda_data['Exclusivity_Date'].values[drug],
+                Trade_Name = fda_data['Trade_Name'].values[drug],
+                Ingredient = fda_data['Ingredient'].values[drug],
+                Applicant = fda_data['Applicant'].values[drug],
+                Approval_Date = fda_data['Approval_Date'].values[drug],
+                Type = fda_data['Type'].values[drug]  
+            )
+            print(fda)
+            db.session.add(os_drug_data)
+            db.session.commit()
+            return '{},{},{},{},{},{}'.format()
+    except Exception as e:
+        return(str(e))
+    
+   
 
 @app.route("/register", methods=["POST"])
 def register_post():
@@ -137,21 +164,6 @@ def login():
             flask.flash('Login Unsuccessful')
             return flask.redirect('failed-login.html')
 
-@app.cli.command('resetdb')
-def resetdb_command():
-    """Destroys and creates the database + tables."""
-
-    from sqlalchemy_utils import database_exists, create_database, drop_database
-    if database_exists(DB_URL):
-        print('Deleting database.')
-        drop_database(DB_URL)
-    if not database_exists(DB_URL):
-        print('Creating database.')
-        create_database(DB_URL)
-
-    print('Creating tables.')
-    db.create_all()
-    print('Shiny!')
         
 
 app.run(debug=True, port=80)
