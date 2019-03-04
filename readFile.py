@@ -1,7 +1,12 @@
 import pandas as pd
-drugsFDAdf = pd.read_csv("tmpfdazip/products.txt", delimiter='~')
-patentFDAdf = pd.read_csv("tmpfdazip/patent.txt", delimiter='~')
-exclusivityFDAdf = pd.read_csv("tmpfdazip/exclusivity.txt", delimiter='~')
+
+
+dtype_dic= {'Appl_No': str, 
+            'Product_No' : str}
+
+drugsFDAdf = pd.read_csv("tmpfdazip/products.txt", delimiter='~', dtype = dtype_dic)
+patentFDAdf = pd.read_csv("tmpfdazip/patent.txt", delimiter='~', dtype = dtype_dic)
+exclusivityFDAdf = pd.read_csv("tmpfdazip/exclusivity.txt", dtype = dtype_dic)
 
 
 def createFDA_df():
