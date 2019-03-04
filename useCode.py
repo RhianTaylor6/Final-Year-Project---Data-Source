@@ -5,21 +5,23 @@ from bs4 import BeautifulSoup
 import readFile
 import re
 import pandas as pd
+import numpy as np
 
 
 def createURL(df):
-    rows = df.count
-    
-    prodNo = df['Product_No'].values[0]
-    appNo = df['Appl_No'].values[0]
-    appType = df['Appl_Type'].values[0]
-    constructURL = 'https://www.accessdata.fda.gov/scripts/cder/ob/patent_info.cfm?Product_No={}&Appl_No={}&Appl_type={}'
-    constructedURL = constructURL.format(prodNo,appNo,appType)
+    constructedURL = []
+    for index, row in df.head().iterrows():
+        prodNo = row['Product_No']
+        appNo = row['Appl_No']
+        appType = row['Appl_Type']
+        constructURL = 'https://www.accessdata.fda.gov/scripts/cder/ob/patent_info.cfm?Product_No={}&Appl_No={}&Appl_type={}'
+        constructedURL.append(constructURL.format(prodNo,appNo,appType))
+        print(constructedURL[index])
     return constructedURL
 
 
-
-page_html = urllib.request.urlopen(createURL(readFile.useSearch()))
+"""
+page_html = urllib.request.urlopen()
 
 soup = BeautifulSoup(page_html,'html.parser')
 
@@ -33,4 +35,5 @@ numUseCodes= len(soup.find_all(text=re.compile('U-')))
 
 for i in range(numUseCodes):
     print(useCodes[i]+ " : " + use[i].text)
-
+"""
+createURL(readFile.useSearch())
