@@ -96,7 +96,7 @@ def serve_webpage(path):
     return flask.send_from_directory('./web_contents/', path)
 
 def populate_OS_db():
-    fda_data = readFile.createFDA_df
+    fda_data = readFile.createFDA_df()
     try:
         for drug in fda_data.iterrows():
             fda=os_drug_data(
@@ -124,8 +124,8 @@ def populate_OS_db():
 @app.route("/register", methods=["POST"])
 def register_post():
     
-    f_name = flask.request.form['f_name']
-    l_name = flask.request.form['l_name']
+    first_name = flask.request.form['f_name']
+    last_name = flask.request.form['l_name']
     password = flask.request.form['password']
     c_password = flask.request.form['c-password']
     email = flask.request.form['email']
@@ -138,24 +138,24 @@ def register_post():
     email = flask.request.args.get('email')
     company = flask.request.args.get('company')
     """
-    print(password)
+    print(first_name + last_name )
     try:
         user=User(
-            f_name = f_name,
-            l_name = l_name,
+            f_name = first_name,
+            l_name = last_name,
             password = password,
             email = email,
             company = company
         )
         db.session.add(user)
         db.session.commit()
-        return '{},{},{},{},{},{}'.format(f_name, l_name, password, c_password, email, company)
+        return '{},{},{},{},{},{}'.format(first_name, last_name, password, c_password, email, company)
     except Exception as e:
         return(str(e))
 
 @app.route("/login", methods=["POST", "GET"])
 def login():
-
+        populate_OS_db()
         email = flask.request.form['email-login']
         password = flask.request.form['password-login']          
         if(email == 'test@gmail.com' and password == 'test1'):

@@ -1,19 +1,12 @@
 import pandas as pd
+drugsFDAdf = pd.read_csv("tmpfdazip/products.txt", delimiter='~')
+patentFDAdf = pd.read_csv("tmpfdazip/patent.txt", delimiter='~')
+exclusivityFDAdf = pd.read_csv("tmpfdazip/exclusivity.txt", delimiter='~')
 
 
-#drugsFDAdfCleaned = drugsFDAdfCleaned.drop_duplicates()
-#drugsFDAdfCleaned = drugsFDAdfCleaned.groupby('Applicant')
 def createFDA_df():
-    drugsFDAdf = pd.read_csv("tmpfdazip/products.txt", delimiter='~')
-    patentFDAdf = pd.read_csv("tmpfdazip/patent.txt", delimiter='~')
-    exclusivityFDAdf = pd.read_csv("tmpfdazip/exclusivity.txt", delimiter='~')
 
-    # print(drugsFDAdf.head)
-    print(list(drugsFDAdf))
-    print(list(patentFDAdf))
-    print(list(exclusivityFDAdf))
-
-    patentFDAdfCleaned = patentFDAdf[['Appl_No', 'Product_No', 'Patent_No', 'Submission_Date']]
+    patentFDAdfCleaned = patentFDAdf[['Appl_No', 'Product_No', 'Patent_No','Patent_Use_Code','Submission_Date', 'Appl_Type']]
     exclusivityFDAdfCleaned = exclusivityFDAdf[['Appl_No', 'Exclusivity_Code','Exclusivity_Date']]
     drugsFDAdfCleaned = drugsFDAdf[['Appl_No', 'Trade_Name', 'Ingredient', 'Applicant', 'Approval_Date', 'Type']]
 
@@ -21,6 +14,9 @@ def createFDA_df():
     FDAdf1 = pd.merge(drugsFDAdfCleaned, FDAdf,  on='Appl_No')
     
     return FDAdf1
-#print(drugsFDAdfCleaned)
-# for key, items in drugsFDAdfCleaned:
-# print(drugsFDAdfCleaned.get_group(key))
+
+
+def useSearch():
+    patentFDAdfCleaned = patentFDAdf[[ 'Product_No','Appl_No', 'Appl_Type','Patent_Use_Code']]
+
+    return patentFDAdfCleaned
