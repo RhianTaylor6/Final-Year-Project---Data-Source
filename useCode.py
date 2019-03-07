@@ -10,7 +10,7 @@ import numpy as np
 
 def createURL(df):
     constructedURL = []
-    for index, row in df.head().iterrows():
+    for index, row in df.iterrows():
         prodNo = row['Product_No']
         appNo = row['Appl_No']
         appType = row['Appl_Type']
