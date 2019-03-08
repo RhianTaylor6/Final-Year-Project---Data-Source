@@ -43,18 +43,15 @@ def getUse(urlList):
             for codes in range(numUseCodes):
                 #print(useCodes[codes]+ " : " + use[codes].text)
                 use_writer.writerow([urlList[urls],useCodes[codes],use[codes].text])
-            
-    
-    
-
-
-
-    
-        
+       
 
 url_list = createURL(readFile.useSearch())
 
 getUse( url_list)
-df = readFile.useSearch()
-df['URL']=url_list
 
+def df_with_URLS():
+    df = readFile.useSearch()
+    df['URL']=url_list
+    return df
+
+df_with_URLS()
