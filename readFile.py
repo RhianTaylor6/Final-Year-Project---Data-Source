@@ -7,7 +7,7 @@ dtype_dic= {'Appl_No': str,
 
 drugsFDAdf = pd.read_csv("tmpfdazip/products.txt", delimiter='~', dtype = dtype_dic)
 patentFDAdf = pd.read_csv("tmpfdazip/patent.txt", delimiter='~', dtype = dtype_dic)
-exclusivityFDAdf = pd.read_csv("tmpfdazip/exclusivity.txt", dtype = dtype_dic)
+exclusivityFDAdf = pd.read_csv("tmpfdazip/exclusivity.txt", delimiter='~', dtype = dtype_dic)
 
 
 
@@ -29,6 +29,7 @@ def useSearch():
 
 def add_Use():
     usesFDAdf = pd.read_csv('uses.csv')
+    #join on df retuned from use_code final method with usesFDAdf on URL
     print(usesFDAdf)
 
 createFDA_df()
