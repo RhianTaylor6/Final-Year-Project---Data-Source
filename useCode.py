@@ -2,7 +2,7 @@
 import importlib
 import urllib.request
 from bs4 import BeautifulSoup
-import readFile
+from readFile import useSearch
 import re
 import pandas as pd
 import numpy as np
@@ -18,6 +18,7 @@ def createURL(df):
         constructURL = 'https://www.accessdata.fda.gov/scripts/cder/ob/patent_info.cfm?Product_No={}&Appl_No={}&Appl_type={}'
         constructedURL.append(constructURL.format(prodNo,appNo,appType))
         #print(constructedURL[index])
+        print(index)
     return constructedURL
 
 
@@ -43,15 +44,16 @@ def getUse(urlList):
             for codes in range(numUseCodes):
                 #print(useCodes[codes]+ " : " + use[codes].text)
                 use_writer.writerow([urlList[urls],useCodes[codes],use[codes].text])
+                print(urls)
        
 
-url_list = createURL(readFile.useSearch())
+url_list = createURL(useSearch())
 
 getUse( url_list)
 
 def df_with_URLS():
-    df = readFile.useSearch()
+    df = useSearch()
     df['URL']=url_list
     return df
 
-df_with_URLS()
+#df_with_URLS()

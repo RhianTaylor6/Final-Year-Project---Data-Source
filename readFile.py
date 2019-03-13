@@ -1,5 +1,5 @@
 import pandas as pd
-import useCode
+
 
 
 dtype_dic= {'Appl_No': str, 
@@ -27,10 +27,6 @@ def useSearch():
 
     return patentFDAdfCleaned
 
-def add_Use():
-    usesFDAdf = pd.read_csv('uses.csv')
-    #join on df retuned from use_code final method with usesFDAdf on URL
-    print(usesFDAdf)
 
 createFDA_df()
 useSearch()
