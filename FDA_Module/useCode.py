@@ -39,7 +39,7 @@ def getUse(urlList):
 
             use = soup.find_all(class_="tooltiptext")
             useCodes= soup.find_all(text=re.compile('U-'))
-            numUseCodes= len(soup.find_all(text=re.compile('U-')))
+            numUseCodes= len(soup.find_all(text=re.compile('U-'))) 
 
             for codes in range(numUseCodes):
                 #print(useCodes[codes]+ " : " + use[codes].text)

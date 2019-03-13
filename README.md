@@ -7,6 +7,7 @@ Three parts to project;
 2. Data Storage
 3. Data Visualisation
 
-Programming Language: Python
+Backend Programming Language: Python
+Web Framework: Flask
 
 Creator: Rhian Taylor
