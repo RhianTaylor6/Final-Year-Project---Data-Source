@@ -5,9 +5,9 @@ import pandas as pd
 dtype_dic= {'Appl_No': str, 
             'Product_No' : str}
 
-drugsFDAdf = pd.read_csv("tmpfdazip/products.txt", delimiter='~', dtype = dtype_dic)
-patentFDAdf = pd.read_csv("tmpfdazip/patent.txt", delimiter='~', dtype = dtype_dic)
-exclusivityFDAdf = pd.read_csv("tmpfdazip/exclusivity.txt", delimiter='~', dtype = dtype_dic)
+drugsFDAdf = pd.read_csv("FDA_Module/tmpfdazip/products.txt", delimiter='~', dtype = dtype_dic)
+patentFDAdf = pd.read_csv("FDA_Module/tmpfdazip/patent.txt", delimiter='~', dtype = dtype_dic)
+exclusivityFDAdf = pd.read_csv("FDA_Module/tmpfdazip/exclusivity.txt", delimiter='~', dtype = dtype_dic)
 
 
 

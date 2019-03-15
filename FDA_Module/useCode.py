@@ -11,20 +11,23 @@ import csv
 
 def createURL(df):
     constructedURL = []
-    for index, row in df.iterrows():
-        prodNo = row['Product_No']
-        appNo = row['Appl_No']
-        appType = row['Appl_Type']
-        constructURL = 'https://www.accessdata.fda.gov/scripts/cder/ob/patent_info.cfm?Product_No={}&Appl_No={}&Appl_type={}'
-        constructedURL.append(constructURL.format(prodNo,appNo,appType))
-        #print(constructedURL[index])
-        print(index)
-    return constructedURL
+    with open('FDA_Module/urls.csv', mode = 'w') as url_file:
+        use_writer = csv.writer(url_file, delimiter=',')
+        use_writer.writerow(['Product_No','Appl_No','Appl_Type','URL'])
+        for index, row in df.iterrows():
+            prodNo = row['Product_No']
+            appNo = row['Appl_No']
+            appType = row['Appl_Type']
+            constructURL = 'https://www.accessdata.fda.gov/scripts/cder/ob/patent_info.cfm?Product_No={}&Appl_No={}&Appl_type={}'
+            constructedURL.append(constructURL.format(prodNo,appNo,appType))
+            use_writer.writerow([row['Product_No'],row['Appl_No'],row['Appl_Type'],constructedURL[index]])
+            print(index)
+        return constructedURL
 
 
 def getUse(urlList):
 
-    with open('uses.csv', mode = 'w') as use_file:
+    with open('FDA_Module/uses.csv', mode = 'w') as use_file:
         use_writer = csv.writer(use_file, delimiter=',')
         use_writer.writerow(['URL',' Use Code','Use'])
         for urls in range(len(urlList)):
@@ -50,10 +53,3 @@ def getUse(urlList):
 url_list = createURL(useSearch())
 
 getUse( url_list)
-
-def df_with_URLS():
-    df = useSearch()
-    df['URL']=url_list
-    return df
-
-#df_with_URLS()
