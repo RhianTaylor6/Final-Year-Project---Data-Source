@@ -2,7 +2,6 @@ import flask
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import os
-import readFile
 import pandas as pd
 
 
@@ -94,7 +93,7 @@ class os_drug_data(db.Model):
 @app.route("/<path:path>")
 def serve_webpage(path):
     return flask.send_from_directory('./web_contents/', path)
-
+'''
 def populate_OS_db():
     fda_data = readFile.createFDA_df()
     try:
@@ -119,7 +118,7 @@ def populate_OS_db():
     except Exception as e:
         return(str(e))
     
-   
+  ''' 
 
 @app.route("/register", methods=["POST"])
 def register_post():
@@ -155,7 +154,7 @@ def register_post():
 
 @app.route("/login", methods=["POST", "GET"])
 def login():
-        populate_OS_db()
+        #populate_OS_db()
         email = flask.request.form['email-login']
         password = flask.request.form['password-login']          
         if(email == 'test@gmail.com' and password == 'test1'):
