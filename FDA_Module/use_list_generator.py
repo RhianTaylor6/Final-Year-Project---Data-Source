@@ -2,6 +2,8 @@ import csv
 
 import pandas as pd
 
+from fuzzywuzzy import fuzz
+from fuzzywuzzy import process
 
 
 dtype_dic = {'Appl_No': str,
@@ -37,8 +39,29 @@ drugs["Drug"] = drugs["Drug"].str.upper()
 therapy_area["Therapy_area"] = therapy_area["Therapy_area"].str.upper()
 drugs["treatment"] = new[2]
 therapyDrugs = pd.merge(drugs,therapy_area, on = ['URL'])
+therapyDrugs["treatment"].replace(r'\s+|\\n', ' ', regex=True, inplace=True) 
+therapyDrugs["treatment"] = therapyDrugs["treatment"].str.upper()
+
+treatments = therapyDrugs[['treatment','Therapy_area']]
+
+trying = therapyDrugs["treatment"].str.contains("psoriasis")
+
+ratio = 0
+
+use_therapy = []
 
 
-trying = fdadf["Trade_Name"].str.contains("ZOSYN")
+for index, row in treatments.iterrows():
+    #ratio = fuzz.WRatio(row[use_codes["Use"]], row[treatments["treatment"]])
+    treatmentSTR = row.treatment
+    #print(row.treatment)
+    for index,row in use_codes.iterrows():
+        #ratio = fuzz.WRatio(use_codes["Use"][use], treatments["treatment"][treatment])
+        #print(row.Use)
+        useSTR = row.Use
+        ratio = fuzz.WRatio(treatmentSTR, useSTR)
+        print(ratio)
 
-print(therapyDrugs)
+
+
+        
