@@ -1,6 +1,8 @@
 import csv  
 import json  
-  
+
+#This modules converts csv files to JSON for the data visualisation.
+
 # Open the CSV  
 f = open( 'FDA_Module/fda.csv', 'rU' )  
 # Change each fieldname to the appropriate field name. I know, so difficult.  

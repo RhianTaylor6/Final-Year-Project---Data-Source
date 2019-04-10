@@ -6,6 +6,7 @@ import pandas as pd
 import numpy as np
 import csv
 
+#This module returns a dataframe containg a URL for the page of each general therapy area which lists the drugs approved by the FDA in that category to pass to therapy_area.py
 dtype_dic = {' Use Code': str,
              'Use': str,
              'Appl_No': str,

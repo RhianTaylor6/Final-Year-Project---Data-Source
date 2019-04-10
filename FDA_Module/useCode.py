@@ -8,6 +8,8 @@ import pandas as pd
 import numpy as np
 import csv
 
+#This module creates a list of URLs for every drug in the FDA drug file then scrapes each website to get the explanation of each use code associated with each drug and stores both things to a CSV
+#THIS FILE TAKES A LONG TIME TO RUN DUE TO THE SHEER NUMBER OF WEB PAGES - ONLY RUN IF THE DATA NEEDS UPDATING (ONCE A MONTH PREFERABLY)
 
 def createURL(df):
     constructedURL = []

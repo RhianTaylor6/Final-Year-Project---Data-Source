@@ -1,6 +1,6 @@
 import pandas as pd
 
-
+#This module reads the 3 files from the FDA website, collates them and creates a dataframe containing the necessary data for useCode to create the URLS to get the use cases for each Use Code
 
 dtype_dic= {'Appl_No': str, 
             'Product_No' : str}

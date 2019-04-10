@@ -4,6 +4,8 @@ import pandas as pd
 
 from readFile import createFDA_df
 
+#This module merges the uses scraped from the FDA website in useCode.py with the data from the files downloaded from the FDA website based on the use code.
+
 dtype_dic = {'Appl_No': str,
              'Product_No': str}
 
@@ -28,32 +30,6 @@ def writeCSVdf(df):
             use_writer.writerow([row['Appl_No'], row['Trade_Name'], row['Ingredient'], row['Applicant'], row['Approval_Date'], row['Type'], row['Product_No'], row['Patent_No'],
                                  row['Patent_Use_Code'], row['Submission_Date'], row['Appl_Type'], row['Exclusivity_Code'], row['Exclusivity_Date'], row['URL'], row[' Use Code'], row['Use']])
 
-def writeCSVdic(dic, name):
-    with open('FDA_Module/'+name+'.csv', mode='w') as dic_file:
-        use_writer = csv.DictWriter(dic_file, fieldnames=['Appl_No', 'Trade_Name', 'Ingredient', 'Applicant', 'Approval_Date', 'Type', 'Product_No', 'Patent_No', 'Patent_Use_Code', 'Submission_Date', 'Appl_Type', 'Exclusivity_Code', 'Exclusivity_Date', 'URL', ' Use Code', 'Use'])
-        use_writer.writeheader()
-        for data in dic:
-            use_writer.writerow(data)
-
-
-        
-
-def Approval_Date_Group():
-    app_date = completedf.groupby('Approval_Date')
-    app_date.name = 'approval_date_gb'
-    return app_date.groups
-
-def Use_Group():
-    use_group = completedf.groupby('Use')
-    use_group.name = 'use_group_gb'
-    return use_group
-
-def Applicant_Group():
-    use_group = completedf.groupby('Applicant')
-    use_group.name = 'applicant_group_gb'
-    return use_group
-
 
 writeCSVdf(completedf)
-#writeCSVdic(Approval_Date_Group(),'app_date_gb') 
-#writeCSVdic(Use_Group())
+

@@ -8,6 +8,8 @@ import numpy as np
 from subprocess import call
 import pytz #timezones
 
+#This module gets the zip file containing the majority of the drug data from the FDA website, downloads it and unzips it and stores it in the project.
+#The file is updated monthly so to be up to date the files should be re-downloaded every month.
 
 def get_link_from_fda():
     fdaSite = 'https://www.fda.gov/Drugs/InformationOnDrugs/ucm129662.htm'

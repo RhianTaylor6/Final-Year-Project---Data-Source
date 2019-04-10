@@ -8,7 +8,7 @@ import pandas as pd
 import numpy as np
 import csv
 
-
+#This module gets generalise therapy groups from centerwatch.com which are written to therpyurls.cv (the seperate webpages to scrape) and therapydrugs (the results of the scrape - drug name, what they treat and the generalised therapy group)
 def createURL(df):
     constructedURL = []
     with open('FDA_Module/therapyurls.csv', mode = 'w') as url_file:
@@ -31,14 +31,6 @@ def getUse(urlList):
             
             page_html = urllib.request.urlopen(urlList[urls])
             soup = BeautifulSoup(page_html,'html.parser')
-            '''
-            for item in soup.find_all('h3'):
-                if not "Drugs Approved in" in item.text:continue
-                p_tag = item.find_next_sibling('p')
-                for drug in p_tag.find_all('a'):
-                    print(drug.text)
-                        #print(urlList[urls])
-                    use_writer.writerow([urlList[urls],drug.text])'''
             
             for section in soup.find_all('h3'):
                 nextNode = section

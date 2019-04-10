@@ -5,6 +5,9 @@ import pandas as pd
 from fuzzywuzzy import fuzz
 from fuzzywuzzy import process
 
+#This module applies fuzzy logic to the strings gathered from useCode.py and therapy_are.py
+#Through calculating the WRatio of the two strings it is possible to assign generalised therapy groups to the FDA use codes
+#TAKES A WHILE TO RUN
 
 dtype_dic = {'Appl_No': str,
              'Product_No': str,
