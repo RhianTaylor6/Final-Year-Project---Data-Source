@@ -109,7 +109,7 @@ clf = LogisticRegression().fit(X_train_tfidf, y_train)
 
 with open('FDA_Module/therapeuticGroups.csv', mode='w') as FDA_file:
     use_writer = csv.writer(FDA_file, delimiter=',')
-    use_writer.writerow([ ' Use Code', 'Use','Treatment' 'Therapeutic_Area'])
+    use_writer.writerow([ ' Use Code', 'Use','Therapeutic_Area'])
         
     for index, row in use_codes.iterrows():
         tarea = clf.predict(count_vect.transform([row.Use]))
