@@ -52,15 +52,15 @@
          <div class="col-sm-6 dropdown chartbg">
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
                 <canvas id="myChart" width="400" height="400"></canvas>
-                <script>
+            <script>
                 var ctx = document.getElementById('myChart');
                 var myChart = new Chart(ctx, {
-                    type: 'bar',
+                    type: 'line',
                     data: {
                         labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
                         datasets: [{
                             label: '# of Approvals',
-                            data: [12, 19, 3, 5, 2, 3],
+                            data: [1,2,3],
                             backgroundColor: [
                                 'rgba(255, 99, 132, 0.2)',
                                 'rgba(54, 162, 235, 0.2)',
