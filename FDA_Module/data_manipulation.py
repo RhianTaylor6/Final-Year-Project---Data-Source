@@ -30,7 +30,14 @@ def num_approved_by_company(df):
 def num_approved_by_therapy_area(df):
     return None
 
-def num_approved_by_company_by_date(df):
+def num_approved_a_year_by_top_ten_company(df):
+    appDate_therapy = df.groupby(['Applicant','Approval_Year'])['Appl_No'].count()
+    appDate_therapy = appDate_therapy.to_frame(name = 'count')
+    appDate_therapy=appDate_therapy.sort_values(by='count',ascending=False).head(11)
+    pivot2 = appDate_therapy.pivot_table(index='Applicant', columns='Approval_Year', values='count')
+    pivot2.dropna()
+    pivot2[np.isnan(pivot2)] = 0
+    (pivot2).to_csv('FDA_Module/Data_Manipulation/num_approved_a_year_by_top_ten_company.csv')
     return None
 
 def num_approved_by_company_per_therapy_area(df):
@@ -67,6 +74,6 @@ def num_FDA_approvals_by_year():
     
    
     
-   
+num_approved_a_year_by_top_ten_company(fdadf)  
 num_approved_in_therapy_area_by_year(fdadf)
 num_FDA_approvals_by_year()
