@@ -1,21 +1,27 @@
 <!Doctype html>
 <html>
 <!--My Current homepage-->
+
 <head>
     <title>Practice Page</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA"
-        crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/js/bootstrap.min.js" integrity="sha384-7aThvCh9TypR7fIc2HV4O/nFMVCBwyIUKL8XCtKE+8xgCgl/PQGuFsvShjr74PBp"
-        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css"
+        integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/js/bootstrap.min.js"
+        integrity="sha384-7aThvCh9TypR7fIc2HV4O/nFMVCBwyIUKL8XCtKE+8xgCgl/PQGuFsvShjr74PBp" crossorigin="anonymous">
+    </script>
     <link href="https://fonts.googleapis.com/css?family=Oxygen|Poppins" rel="stylesheet">
     <link href="practice.css" rel="stylesheet" type="text/css">
-    
 
-</head> 
+
+
+
+</head>
 
 <body>
     <div class="container-fluid">
@@ -33,13 +39,15 @@
             <div class="col-sm-12">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
                     <a class="navbar-brand" href="#"></a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-                        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                        aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
-                            <a class="nav-item nav-link active" href="welcome.html">Home <span class="sr-only">(current)</span></a>
+                            <a class="nav-item nav-link active" href="welcome.html">Home <span
+                                    class="sr-only">(current)</span></a>
                             <a class="nav-item nav-link" href="">Refresh DataSource</a>
                             <a class="nav-item nav-link" href="">Add Data</a>
                             <a class="nav-item nav-link" href="">Notifications and Updates</a>
@@ -48,52 +56,391 @@
                 </nav>
 
             </div>
-         </div>
-         <div class="col-sm-6 dropdown chartbg">
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
-                <canvas id="myChart" width="400" height="400"></canvas>
+        </div>
+
+        <div class="row col-sm-6 dropdown chartbg">
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
+            <canvas id="approved_a_year_chart" width="50%" height="50%"></canvas>
             <script>
-                var ctx = document.getElementById('myChart');
+                const HttpData = new XMLHttpRequest();
+                var data1 = "";
+                var begStr = "["
+                var endStr = "]"
+                const urldata = 'http://localhost:80/data';
+                HttpData.open("GET", urldata);
+                HttpData.send();
+                HttpData.onreadystatechange = (e) => {
+                    data1 = HttpData.responseText;
+                    data1 = data1.replace(/\\/g, "");
+                    //dara1=data1.replace(/\\/g,",");
+                    //data1 = JSON.parse(data1)
+                    data1 = data1.substring(0, data1.length - 1);
+                    data1 = begStr + data1 + endStr;
+                    console.log(data1);
+                }
+
+                const HttpLabel = new XMLHttpRequest();
+                var label1 = "";
+                const urllabel = 'http://localhost:80/label';
+                HttpLabel.open("GET", urllabel);
+                HttpLabel.send();
+                HttpLabel.onreadystatechange = (e) => {
+                    label1 = HttpLabel.responseText;
+                    label1 = label1.replace(/\\/g, "");
+                    //dara1=data1.replace(/\\/g,",");
+                    //data1 = JSON.parse(data1)
+                    label1 = label1.substring(0, label1.length - 1);
+                    label1 = begStr + label1 + endStr;
+                    console.log(label1);
+                }
+
+                var ctx = document.getElementById('approved_a_year_chart');
                 var myChart = new Chart(ctx, {
                     type: 'line',
                     data: {
-                        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                        labels: [1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010,
+                            2011,
+                            2012,
+                            2013, 2014, 2015, 2016, 2017, 2018
+                        ],
                         datasets: [{
-                            label: '# of Approvals',
-                            data: [1,2,3],
-                            backgroundColor: [
-                                'rgba(255, 99, 132, 0.2)',
-                                'rgba(54, 162, 235, 0.2)',
-                                'rgba(255, 206, 86, 0.2)',
-                                'rgba(75, 192, 192, 0.2)',
-                                'rgba(153, 102, 255, 0.2)',
-                                'rgba(255, 159, 64, 0.2)'
+                            label: '# of Approvals', // name the series
+                            data: [3, 0, 1, 3, 3, 3, 4, 7, 4, 10, 11, 15, 17, 23, 30, 36, 52, 46,
+                                59,
+                                64
                             ],
-                            borderColor: [
-                                'rgba(255, 99, 132, 1)',
-                                'rgba(54, 162, 235, 1)',
-                                'rgba(255, 206, 86, 1)',
-                                'rgba(75, 192, 192, 1)',
-                                'rgba(153, 102, 255, 1)',
-                                'rgba(255, 159, 64, 1)'
-                            ],
-                            borderWidth: 1
+                            lineTension: 0.1,
+                            pointStyle: 'cross',
+                            borderWidth: 1,
+                            borderColor: '#423538',
                         }]
                     },
                     options: {
+                        layout: {
+                            padding: {
+                                left: 5,
+                                right: 5,
+                                top: 10,
+                                bottom: 10
+                            }
+                        },
+                        legend: {
+                            display: false,
+                        },
+
+                        title: {
+                            display: true,
+                            text: 'Number of drugs approved by the FDA per year',
+                            fontSize: 16,
+                            fontFamily: "'Oxygen', sans-serif",
+                            fontColor: '#423538',
+
+                        },
                         scales: {
                             yAxes: [{
                                 ticks: {
-                                    beginAtZero: true
+                                    beginAtZero: true,
                                 }
+
                             }]
                         }
                     }
                 });
-                </script>
-         </div>
+            </script>
+        </div>
 
-    
+
+
+        <div class="row col-sm-6 dropdown chartbg">
+            <canvas id="approved_a_year_by_therapy" width="100%" height="100%"></canvas>
+            <script>
+                //'CARDIOLOGY/VASCULAR DISEASES (122)',['DERMATOLOGY (109)'  , 'ENDOCRINOLOGY (229) ' ,  'FAMILY MEDICINE (624) ' , ['ONCOLOGY (263) ']    ,['OPHTHALMOLOGY (56) '],['OTOLARYNGOLOGY (EAR, NOSE, THROAT) (23) ']  ,
+                var ctx = document.getElementById('approved_a_year_by_therapy');
+                var myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: [1999, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011,
+                            2012, 2013, 2014, 2015, 2016, 2017, 2018
+                        ],
+                        datasets: [{
+                                label: 'CARDIOLOGY/VASCULAR DISEASES', // name the series
+                                data: [0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 2.0,
+                                    1.0, 4.0, 2.0, 1.0, 1.0
+                                ],
+                                lineTension: 0.1,
+                                pointStyle: 'cross',
+                                borderWidth: 1,
+                                borderColor: '#423538',
+                            },
+                            {
+                                label: 'DERMATOLOGY', // name the series
+                                data: [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                    2.0, 3.0, 1.0, 3.0, 3.0
+                                ],
+                                lineTension: 0.1,
+                                pointStyle: 'cross',
+                                borderWidth: 1,
+                                borderColor: '#423538',
+
+
+                            },
+                            {
+                                label: 'ENDOCRINOLOGY', // name the series
+                                data: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 2.0, 0.0, 1.0, 2.0,
+                                    3.0, 2.0, 3.0, 8.0, 4.0
+                                ],
+                                lineTension: 0.1,
+                                pointStyle: 'cross',
+                                borderWidth: 1,
+                                borderColor: '#423538',
+
+
+                            },
+
+                            {
+                                label: 'FAMILY MEDICINE', // name the series
+                                data: [2.0, 1.0, 1.0, 0.0, 0.0, 3.0, 2.0, 2.0, 1.0, 2.0, 3.0, 5.0, 7.0, 7.0,
+                                    10.0, 13.0, 11.0, 10.0, 24.0
+                                ],
+                                lineTension: 0.1,
+                                pointStyle: 'cross',
+                                borderWidth: 1,
+                                borderColor: '#423538',
+
+
+                            },
+
+                            {
+                                label: 'GASTROENTEROLOGY', // name the series
+                                data: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 2.0, 0.0, 0.0, 0.0, 0.0,
+                                    1.0, 0.0, 1.0, 2.0, 0.0
+                                ],
+                                lineTension: 0.1,
+                                pointStyle: 'cross',
+                                borderWidth: 1,
+                                borderColor: '#423538',
+
+
+                            },
+
+                            {
+                                label: 'HEMATOLOGY', // name the series
+                                data: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                    0.0, 0.0, 0.0, 2.0, 3.0
+                                ],
+                                lineTension: 0.1,
+                                pointStyle: 'cross',
+                                borderWidth: 1,
+                                borderColor: '#423538',
+
+
+                            },
+                            {
+                                label: 'HEPATOLOGY (LIVER, PANCREATIC, GALL BLADDER) ', // name the series
+                                data: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0,
+                                    1.0, 1.0, 1.0, 1.0, 3.0
+                                ],
+                                lineTension: 0.1,
+                                pointStyle: 'cross',
+                                borderWidth: 1,
+                                borderColor: '#423538',
+
+
+                            },
+
+                            {
+                                label: 'IMMUNOLOGY ', // name the series
+                                data: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 2.0,
+                                    0.0, 2.0, 2.0, 0.0, 1.0
+                                ],
+                                lineTension: 0.1,
+                                pointStyle: 'cross',
+                                borderWidth: 1,
+                                borderColor: '#423538',
+
+
+                            },
+                            {
+                                label: 'INFECTIONS AND INFECTIOUS DISEASES ', // name the series
+                                data: [0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 3.0, 2.0,
+                                    6.0, 2.0, 5.0, 5.0, 3.0
+                                ],
+                                lineTension: 0.1,
+                                pointStyle: 'cross',
+                                borderWidth: 1,
+                                borderColor: '#423538',
+                            },
+
+                            {
+                                label: 'MUSCULOSKELETAL ', // name the series
+                                data: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 2.0,
+                                    0.0, 0.0, 2.0, 1.0, 0.0
+                                ],
+                                lineTension: 0.1,
+                                pointStyle: 'cross',
+                                borderWidth: 1,
+                                borderColor: '#423538',
+                            },
+                            {
+                                label: 'NEPHROLOGY ', // name the series
+                                data: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0,
+                                    0.0, 0.0, 1.0, 2.0, 1.0
+                                ],
+                                lineTension: 0.1,
+                                pointStyle: 'cross',
+                                borderWidth: 1,
+                                borderColor: '#423538',
+                            },
+                            {
+                                label: 'NEUROLOGY ', // name the series
+                                data: [0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 3.0, 2.0, 4.0, 2.0, 0.0, 1.0,
+                                    2.0, 4.0, 7.0, 6.0, 6.0
+                                ],
+                                lineTension: 0.1,
+                                pointStyle: 'cross',
+                                borderWidth: 1,
+                                borderColor: '#423538',
+                            },
+                            {
+                                label: 'OBSTETRICS/GYNECOLOGY (WOMEN’S HEALTH) ', // name the series
+                                data: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0,
+                                    0.0, 2.0, 2.0, 0.0, 0.0
+                                ],
+                                lineTension: 0.1,
+                                pointStyle: 'cross',
+                                borderWidth: 1,
+                                borderColor: '#423538',
+                            },
+                            {
+                                label: 'ONCOLOGY ', // name the series
+                                data: [0.0, 0.0, 1.0, 0.0, 2.0, 1.0, 2.0, 1.0, 2.0, 0.0, 4.0, 4.0, 7.0, 5.0,
+                                    5.0, 8.0, 4.0, 12.0, 9.0
+                                ],
+                                lineTension: 0.1,
+                                pointStyle: 'cross',
+                                borderWidth: 1,
+                                borderColor: '#423538',
+                            },
+                            {
+                                label: 'OPHTHALMOLOGY', // name the series
+                                data: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0,
+                                    0.0, 1.0, 1.0, 3.0, 0.0
+                                ],
+                                lineTension: 0.1,
+                                pointStyle: 'cross',
+                                borderWidth: 1,
+                                borderColor: '#423538',
+                            },
+                            {
+                                label: 'OTOLARYNGOLOGY (EAR, NOSE, THROAT)', // name the series
+                                data: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                    0.0, 0.0, 0.0, 0.0, 0.0
+                                ],
+                                lineTension: 0.1,
+                                pointStyle: 'cross',
+                                borderWidth: 1,
+                                borderColor: '#423538',
+                            },
+                            {
+                                label: 'PEDIATRICS/NEONATOLOGY', // name the series
+                                data: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                    0.0, 0.0, 0.0, 1.0, 0.0
+                                ],
+                                lineTension: 0.1,
+                                pointStyle: 'cross',
+                                borderWidth: 1,
+                                borderColor: '#423538',
+                            },
+
+                            {
+                                label: 'PHARMACOLOGY/TOXICOLOGY', // name the series
+                                data: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                    0.0, 1.0, 0.0, 0.0, 0.0
+                                ],
+                                lineTension: 0.1,
+                                pointStyle: 'cross',
+                                borderWidth: 1,
+                                borderColor: '#423538',
+                            },
+
+                            {
+                                label: 'PSYCHIATRY/PSYCHOLOGY', // name the series
+                                data: [0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 3.0, 0.0, 0.0, 3.0, 0.0, 2.0, 0.0, 4.0,
+                                    1.0, 7.0, 0.0, 2.0, 2.0
+                                ],
+                                lineTension: 0.1,
+                                pointStyle: 'cross',
+                                borderWidth: 1,
+                                borderColor: '#423538',
+                            },
+                            {
+                                label: 'PULMONARY/RESPIRATORY DISEASES', // name the series
+                                data: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 2.0,
+                                    4.0, 2.0, 2.0, 0.0, 4.0
+                                ],
+                                lineTension: 0.1,
+                                pointStyle: 'cross',
+                                borderWidth: 1,
+                                borderColor: '#423538',
+                            },
+                            {
+                                label: 'UROLOGY', // name the series
+                                data: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                    0.0, 0.0, 1.0, 0.0, 0.0
+                                ],
+                                lineTension: 0.1,
+                                pointStyle: 'cross',
+                                borderWidth: 1,
+                                borderColor: '#423538',
+                                backgroundColor: '#423538',
+                            },
+
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        layout: {
+                            padding: {
+                                left: 5,
+                                right: 5,
+                                top: 10,
+                                bottom: 10
+                            }
+                        },
+                        legend: {
+                            position: 'right',
+                        },
+
+                        title: {
+                            display: true,
+                            text: 'Number of drugs approved by the FDA per year',
+                            fontSize: 16,
+                            fontFamily: "'Oxygen', sans-serif",
+                            fontColor: '#423538',
+
+                        },
+                        scales: {
+                            xAxes: [{
+                                stacked: true
+                            }],
+                            yAxes: [{
+                                stacked: true,
+                                ticks: {
+                                    beginAtZero: true,
+                                    
+                                }
+
+                            }]
+                        }
+                    }
+                });
+            </script>
+        </div>
+    </div>
+
+
+
 </body>
 
 </html>

@@ -21,9 +21,11 @@ def approval_a_year(df):
     # Open the CSV  
     f = open( 'FDA_Module/Data_Manipulation/approval_a_year.csv', 'rU' )  
     # Change each fieldname to the appropriate field name. I know, so difficult.  
-    reader = csv.DictReader( f, fieldnames = ( "Approval_Year", "Applicant"))
-    # Parse the CSV into JSON  
+    reader = csv.DictReader( f, fieldnames = ( 'Index','Approval_Year', 'Count'))
+    # Parse the CSV into JSON 
+    
     out = json.dumps( [ row for row in reader ] )  
+    print(out)
     print("JSON parsed!") 
     # Save the JSON  
     f = open( 'FDA_Module/Data_Manipulation/approval_a_year.json', 'w')  

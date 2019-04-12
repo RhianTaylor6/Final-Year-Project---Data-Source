@@ -3,6 +3,8 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import os
 import pandas as pd
+import csv
+import json
 
 
 
@@ -163,6 +165,16 @@ def login():
             flask.flash('Login Unsuccessful')
             return flask.redirect('failed-login.html')
 
-        
+@app.route("/data", methods=["GET"])
+def getdata():
+    with open('./FDA_Module/Data_Manipulation/approval_a_year_data.csv', 'r') as file:
+        data = file.read().replace('\n', ',')    
+    return data
+
+@app.route("/label", methods=["GET"])
+def getlabel(): 
+    with open('./FDA_Module/Data_Manipulation/approval_a_year_label.csv', 'r') as file:
+            label = file.read().replace('\n', ',')  
+    return label
 
 app.run(debug=True, port=80)
