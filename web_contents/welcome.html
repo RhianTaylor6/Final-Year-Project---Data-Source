@@ -505,30 +505,28 @@
             </div>
         </div>
         <div class="row">
-                <div class="col-sm-3 dropdown"></div>
-                <div class="col-sm-6 dropdown chartbg">
-                        <canvas id="num_approved_a_year_by_top_ten_company" width="100%" height="100%"></canvas>
-                        <script>
-                            var ctx = document.getElementById('num_approved_a_year_by_top_ten_company');
-                            var myChart = new Chart(ctx, {
-                                type: 'bar',
-                                data: {
-                                    labels: [2013,2014,2015,2016,2017
-                                    ],
-                                    datasets: [{
-                                            label: 'ASTRAZENECA AB', // name the series
-                                            data: [0.0,0.0,0.0,0.0,3.0],
-                                            lineTension: 0.1,
-                                            pointStyle: 'cross',
-                                            borderWidth: 1,
-                                            borderColor: '#423538',
-                                            backgroundColor: '#b88c8c',
-        
-                                        },
-                                        {
+            <div class="col-sm-1 dropdown"></div>
+            <div class="col-sm-5 dropdown chartbg">
+                <canvas id="num_approved_a_year_by_top_ten_company" width="100%" height="100%"></canvas>
+                <script>
+                    var ctx = document.getElementById('num_approved_a_year_by_top_ten_company');
+                    var myChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: [2013, 2014, 2015, 2016, 2017],
+                            datasets: [{
+                                    label: 'ASTRAZENECA AB', // name the series
+                                    data: [0.0, 0.0, 0.0, 0.0, 3.0],
+                                    lineTension: 0.1,
+                                    pointStyle: 'cross',
+                                    borderWidth: 1,
+                                    borderColor: '#423538',
+                                    backgroundColor: '#b88c8c',
+
+                                },
+                                {
                                     label: 'ASTRAZENECA PHARMS', // name the series
-                                    data: [0.0,3.0,0.0,0.0,0.0
-                                    ],
+                                    data: [0.0, 3.0, 0.0, 0.0, 0.0],
                                     lineTension: 0.1,
                                     pointStyle: 'cross',
                                     borderWidth: 1,
@@ -538,8 +536,7 @@
                                 },
                                 {
                                     label: 'BOEHRINGER INGELHEIM ', // name the series
-                                    data: [0.0,3.0,0.0,0.0,0.0
-                                    ],
+                                    data: [0.0, 3.0, 0.0, 0.0, 0.0],
                                     lineTension: 0.1,
                                     pointStyle: 'cross',
                                     borderWidth: 1,
@@ -550,8 +547,7 @@
                                 },
                                 {
                                     label: 'CUBIST PHARMS LLC', // name the series
-                                    data: [0.0,3.0,0.0,0.0,0.0
-                                    ],
+                                    data: [0.0, 3.0, 0.0, 0.0, 0.0],
                                     lineTension: 0.1,
                                     pointStyle: 'cross',
                                     borderWidth: 1,
@@ -561,8 +557,7 @@
                                 },
                                 {
                                     label: 'GILEAD SCIENCES INC', // name the series
-                                    data: [0.0,0.0,0.0,4.0,0.0
-                                    ],
+                                    data: [0.0, 0.0, 0.0, 4.0, 0.0],
                                     lineTension: 0.1,
                                     pointStyle: 'cross',
                                     borderWidth: 1,
@@ -572,8 +567,7 @@
                                 },
                                 {
                                     label: 'MERCK SHARP DOHME', // name the series
-                                    data: [0.0,0.0,0.0,0.0,3.0
-                                    ],
+                                    data: [0.0, 0.0, 0.0, 0.0, 3.0],
                                     lineTension: 0.1,
                                     pointStyle: 'cross',
                                     borderWidth: 1,
@@ -584,8 +578,7 @@
 
                                 {
                                     label: 'NOVARTIS PHARMS CORP', // name the series
-                                    data: [0.0,0.0,3.0,0.0,3.0
-                                    ],
+                                    data: [0.0, 0.0, 3.0, 0.0, 3.0],
                                     lineTension: 0.1,
                                     pointStyle: 'cross',
                                     borderWidth: 1,
@@ -596,8 +589,7 @@
 
                                 {
                                     label: 'SUNOVION PHARMS INC', // name the series
-                                    data: [0.0,0.0,2.0,0.0,0.0
-                                    ],
+                                    data: [0.0, 0.0, 2.0, 0.0, 0.0],
                                     lineTension: 0.1,
                                     pointStyle: 'cross',
                                     borderWidth: 1,
@@ -607,8 +599,7 @@
                                 },
                                 {
                                     label: 'TAKEDA PHARMS USA', // name the series
-                                    data: [4.0,0.0,0.0,0.0,0.0
-                                    ],
+                                    data: [4.0, 0.0, 0.0, 0.0, 0.0],
                                     lineTension: 0.1,
                                     pointStyle: 'cross',
                                     borderWidth: 1,
@@ -618,8 +609,7 @@
                                 },
                                 {
                                     label: 'UCB INC', // name the series
-                                    data: [0.0,0.0,0.0,3.0,0.0
-                                    ],
+                                    data: [0.0, 0.0, 0.0, 3.0, 0.0],
                                     lineTension: 0.1,
                                     pointStyle: 'cross',
                                     borderWidth: 1,
@@ -627,55 +617,221 @@
                                     backgroundColor: '#e6f0fa',
 
                                 },
-                                        
-                                       
-        
-                                    ]
-                                },
-                                options: {
-                                    responsive: true,
-                                    maintainAspectRatio: true,
-                                    layout: {
-                                        padding: {
-                                            left: 5,
-                                            right: 0,
-                                            top: 10,
-                                            bottom: 10
-                                        }
-                                    },
-                                    legend: {
-                                        position: 'right',
-                                        labels: {
-                                            fontSize: 9,
-                                        },
-        
-                                    },
-        
-                                    title: {
-                                        display: true,
-                                        text: 'Number of drugs approved by the FDA, per year, for the top 10 companies based on number of approvals',
-                                        fontSize: 16,
-                                        fontFamily: "'Oxygen', sans-serif",
-                                        fontColor: '#423538',
-        
-                                    },
-                                    scales: {
-                                        xAxes: [{
-                                            stacked: true
-                                        }],
-                                        yAxes: [{
-                                            stacked: true,
-                                            ticks: {
-                                                beginAtZero: true,
-        
-                                            }
-        
-                                        }]
-                                    }
+
+
+
+                            ]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: true,
+                            layout: {
+                                padding: {
+                                    left: 5,
+                                    right: 0,
+                                    top: 10,
+                                    bottom: 10
                                 }
-                            });
-                        </script>
-                    </div>
+                            },
+                            legend: {
+                                position: 'right',
+                                labels: {
+                                    fontSize: 9,
+                                },
+
+                            },
+
+                            title: {
+                                display: true,
+                                text: 'Number of drugs approved by the FDA, per year, for the top 10 companies based on number of approvals',
+                                fontSize: 16,
+                                fontFamily: "'Oxygen', sans-serif",
+                                fontColor: '#423538',
+
+                            },
+                            scales: {
+                                xAxes: [{
+                                    stacked: true
+                                }],
+                                yAxes: [{
+                                    stacked: true,
+                                    ticks: {
+                                        beginAtZero: true,
+
+                                    }
+
+                                }]
+                            }
+                        }
+                    });
+                </script>
+            </div>
+            <div class="col-sm-5 dropdown chartbg">
+                <canvas id="num_approved_in_therapy_area_by_top_ten_company" width="100%" height="100%"></canvas>
+                <script>
+                    var ctx = document.getElementById('num_approved_in_therapy_area_by_top_ten_company');
+                    var myChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: ['ENDOCRINOLOGY','FAMILY MEDICINE','INFECTIONS AND INFECTIOUS DISEASES','NEUROLOGY','ONCOLOGY','PSYCHIATRY/PSYCHOLOGY'],
+                            datasets: [{
+                                    label: 'ASTRAZENECA AB', // name the series
+                                    data: [7.0,0.0,0.0,0.0,0.0,0.0],
+                                    lineTension: 0.1,
+                                    pointStyle: 'cross',
+                                    borderWidth: 1,
+                                    borderColor: '#423538',
+                                    backgroundColor: '#b88c8c',
+
+                                },
+                                {
+                                    label: 'BAYER HLTHCARE', // name the series
+                                    data: [0.0,0.0,0.0,0.0,4.0,0.0],
+                                    lineTension: 0.1,
+                                    pointStyle: 'cross',
+                                    borderWidth: 1,
+                                    borderColor: '#423538',
+                                    backgroundColor: '#ddadad',
+
+                                },
+                                {
+                                    label: 'BOEHRINGER INGELHEIM ', // name the series
+                                    data: [0.0,3.0,0.0,0.0,0.0,0.0],
+                                    lineTension: 0.1,
+                                    pointStyle: 'cross',
+                                    borderWidth: 1,
+                                    borderColor: '#423538',
+                                    backgroundColor: '#eeb9a2',
+
+
+                                },
+                                {
+                                    label: 'CUBIST PHARMS LLC', // name the series
+                                    data: [0.0,0.0,4.0,0.0,0.0,0.0],
+                                    lineTension: 0.1,
+                                    pointStyle: 'cross',
+                                    borderWidth: 1,
+                                    borderColor: '#423538',
+                                    backgroundColor: '#c1ffc1',
+
+                                },
+                                {
+                                    label: 'GILEAD SCIENCES INC', // name the series
+                                    data: [0.0,0.0,6.0,0.0,0.0,0.0],
+                                    lineTension: 0.1,
+                                    pointStyle: 'cross',
+                                    borderWidth: 1,
+                                    borderColor: '#423538',
+                                    backgroundColor: '#ffe7e7',
+
+                                },
+                                {
+                                    label: 'NOVARTIS PHARMS CORP', // name the series
+                                    data: [0.0,3.0,0.0,0.0,6.0,0.0],
+                                    lineTension: 0.1,
+                                    pointStyle: 'cross',
+                                    borderWidth: 1,
+                                    borderColor: '#423538',
+                                    backgroundColor: '#fff0da',
+
+                                },
+
+                                {
+                                    label: 'NOVO', // name the series
+                                    data: [3.0,0.0,0.0,0.0,0.0,0.0],
+                                    lineTension: 0.1,
+                                    pointStyle: 'cross',
+                                    borderWidth: 1,
+                                    borderColor: '#423538',
+                                    backgroundColor: '#ffffff',
+
+                                },
+
+                                {
+                                    label: 'OTSUKA', // name the series
+                                    data: [0.0,0.0,0.0,0.0,0.0,4.0],
+                                    lineTension: 0.1,
+                                    pointStyle: 'cross',
+                                    borderWidth: 1,
+                                    borderColor: '#423538',
+                                    backgroundColor: '#f8f0e9',
+
+                                },
+                                {
+                                    label: 'SANOFI-AVENTIS US', // name the series
+                                    data: [3.0,0.0,0.0,0.0,0.0,0.0],
+                                    lineTension: 0.1,
+                                    pointStyle: 'cross',
+                                    borderWidth: 1,
+                                    borderColor: '#423538',
+                                    backgroundColor: '#d6c7c7',
+
+                                },
+                                {
+                                    label: 'UCB INC', // name the series
+                                    data: [0.0,0.0,0.0,6.0,0.0,0.0],
+                                    lineTension: 0.1,
+                                    pointStyle: 'cross',
+                                    borderWidth: 1,
+                                    borderColor: '#423538',
+                                    backgroundColor: '#e6f0fa',
+
+                                },
+
+
+
+                            ]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: true,
+                            layout: {
+                                padding: {
+                                    left: 5,
+                                    right: 0,
+                                    top: 10,
+                                    bottom: 10
+                                }
+                            },
+                            legend: {
+                                position: 'right',
+                                labels: {
+                                    fontSize: 9,
+                                },
+
+                            },
+
+                            title: {
+                                display: true,
+                                text: 'Number of drugs approved by the FDA, per therapy area, for the top 10 companies based on number of approvals',
+                                fontSize: 16,
+                                fontFamily: "'Oxygen', sans-serif",
+                                fontColor: '#423538',
+
+                            },
+                            scales: {
+                                xAxes: [{
+                                    stacked: true,
+                                    type: 'category',
+                                    labels: ['ENDOCRINOLOGY','FAMILY MEDICINE','INFECTIONS AND INFECTIOUS DISEASES','NEUROLOGY','ONCOLOGY','PSYCHIATRY/PSYCHOLOGY'],
+                                    ticks: {
+                                        beginAtZero: true,
+
+                                    }
+                                }],
+                                yAxes: [{
+                                    stacked: true,
+                                    ticks: {
+                                        beginAtZero: true,
+
+                                    }
+
+                                }]
+                            }
+                        }
+                    });
+                </script>
+            </div>
 
         </div>
 
