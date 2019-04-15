@@ -13,6 +13,7 @@ import csv
 
 def createURL(df):
     constructedURL = []
+    
     with open('FDA_Module/urls.csv', mode = 'w') as url_file:
         use_writer = csv.writer(url_file, delimiter=',')
         use_writer.writerow(['Product_No','Appl_No','Appl_Type','URL'])
@@ -22,8 +23,9 @@ def createURL(df):
             appType = row['Appl_Type']
             constructURL = 'https://www.accessdata.fda.gov/scripts/cder/ob/patent_info.cfm?Product_No={}&Appl_No={}&Appl_type={}'
             constructedURL.append(constructURL.format(prodNo,appNo,appType))
-            use_writer.writerow([row['Product_No'],row['Appl_No'],row['Appl_Type'],constructedURL[index]])
             print(index)
+            use_writer.writerow([prodNo,appNo,appType,constructedURL[index]])
+            
         return constructedURL
 
 

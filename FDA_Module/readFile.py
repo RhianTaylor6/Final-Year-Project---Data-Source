@@ -24,7 +24,7 @@ def createFDA_df():
 
 def useSearch():
     patentFDAdfCleaned = patentFDAdf[[ 'Product_No','Appl_No', 'Appl_Type','Patent_Use_Code']]
-
+   
     return patentFDAdfCleaned
 
 

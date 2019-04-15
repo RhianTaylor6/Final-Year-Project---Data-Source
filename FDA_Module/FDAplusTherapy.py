@@ -17,7 +17,9 @@ therapeuticGroupsdf = pd.read_csv("FDA_Module/therapeuticGroups.csv", dtype=dtyp
 therapeuticGroupsdf = therapeuticGroupsdf[[" Use Code", "Therapeutic_Area"]]
 fdadf = pd.read_csv("FDA_Module/fda.csv", dtype=dtype_dic)
 fdadf[' Use Code'].replace(r'\s+|\\n', ' ', regex=True, inplace=True)
-fdadf = pd.merge(fdadf, therapeuticGroupsdf, on=" Use Code", how ='left')
+
+fdadf = pd.merge(fdadf, therapeuticGroupsdf, on=" Use Code")
+
 
 def writeCSVdf(df):
     with open('FDA_Module/complete_FDA_dataset.csv', mode='w') as FDA_file:
