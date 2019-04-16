@@ -1,0 +1,844 @@
+<!Doctype html>
+<html>
+<!--My Current homepage-->
+
+<head>
+    <title>Practice Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css"
+        integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/js/bootstrap.min.js"
+        integrity="sha384-7aThvCh9TypR7fIc2HV4O/nFMVCBwyIUKL8XCtKE+8xgCgl/PQGuFsvShjr74PBp" crossorigin="anonymous">
+    </script>
+    <link href="https://fonts.googleapis.com/css?family=Oxygen|Poppins" rel="stylesheet">
+    <link href="practice.css" rel="stylesheet" type="text/css">
+
+
+
+
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row back-colour">
+            <div class="col-sm-12">
+                <h1>DataSource</h1>
+            </div>
+        </div>
+        <div class="row back-colour">
+            <div class="col-sm-12">
+                <h2>Welcome...</h2>
+            </div>
+        </div>
+        <div class="row back-colour">
+            <div class="col-sm-12">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <a class="navbar-brand" href="#"></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+                            <a class="nav-item nav-link active" href="welcome.html">Home <span
+                                    class="sr-only">(current)</span></a>
+                            <a class="nav-item nav-link" href="">Refresh DataSource</a>
+                            <a class="nav-item nav-link" href="">Add Data</a>
+                            <a class="nav-item nav-link" href="">Notifications and Updates</a>
+                        </div>
+                    </div>
+                </nav>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-1 dropdown"></div>
+            <div class="col-sm-5 dropdown chartbg">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
+                <canvas id="approved_a_year_chart" width="50%" height="50%"></canvas>
+                <script>
+                    const HttpData = new XMLHttpRequest();
+                    var data1 = "";
+                    var begStr = "["
+                    var endStr = "]"
+                    const urldata = 'http://localhost:80/data';
+                    HttpData.open("GET", urldata);
+                    HttpData.send();
+                    HttpData.onreadystatechange = (e) => {
+                        data1 = HttpData.responseText;
+                        data1 = data1.replace(/\\/g, "");
+                        //dara1=data1.replace(/\\/g,",");
+                        //data1 = JSON.parse(data1)
+                        data1 = data1.substring(0, data1.length - 1);
+                        data1 = begStr + data1 + endStr;
+                        console.log(data1);
+                    }
+
+                    const HttpLabel = new XMLHttpRequest();
+                    var label1 = "";
+                    const urllabel = 'http://localhost:80/label';
+                    HttpLabel.open("GET", urllabel);
+                    HttpLabel.send();
+                    HttpLabel.onreadystatechange = (e) => {
+                        label1 = HttpLabel.responseText;
+                        label1 = label1.replace(/\\/g, "");
+                        //dara1=data1.replace(/\\/g,",");
+                        //data1 = JSON.parse(data1)
+                        label1 = label1.substring(0, label1.length - 1);
+                        label1 = begStr + label1 + endStr;
+                        console.log(label1);
+                    }
+
+                    var ctx = document.getElementById('approved_a_year_chart');
+                    var myChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: [1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010,
+                                2011,
+                                2012,
+                                2013, 2014, 2015, 2016, 2017, 2018
+                            ],
+                            datasets: [{
+                                label: '# of Approvals', // name the series
+                                data: [3, 0, 1, 3, 3, 3, 4, 7, 4, 10, 11, 15, 17, 23, 30, 36, 52, 46,
+                                    59,
+                                    64
+                                ],
+                                lineTension: 0.1,
+                                pointStyle: 'cross',
+                                borderWidth: 1,
+                                borderColor: '#423538',
+                            }]
+                        },
+                        options: {
+                            layout: {
+                                padding: {
+                                    left: 5,
+                                    right: 5,
+                                    top: 10,
+                                    bottom: 10
+                                }
+                            },
+                            legend: {
+                                display: false,
+                            },
+
+                            title: {
+                                display: true,
+                                text: 'Number of drugs approved by the FDA per year',
+                                fontSize: 16,
+                                fontFamily: "'Oxygen', sans-serif",
+                                fontColor: '#423538',
+
+                            },
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true,
+                                    }
+
+                                }]
+                            }
+                        }
+                    });
+                </script>
+            </div>
+
+
+            <div class="col-sm-5 dropdown chartbg">
+                <canvas id="approved_a_year_by_therapy" width="100%" height="100%"></canvas>
+                <script>
+                    var ctx = document.getElementById('approved_a_year_by_therapy');
+                    var myChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: [1999, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011,
+                                2012, 2013, 2014, 2015, 2016, 2017, 2018
+                            ],
+                            datasets: [{
+                                    label: 'CARDIOLOGY/VASCULAR DISEASES', // name the series
+                                    data: [0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0,
+                                        2.0,
+                                        1.0, 4.0, 2.0, 1.0, 1.0
+                                    ],
+                                    lineTension: 0.1,
+                                    pointStyle: 'cross',
+                                    borderWidth: 1,
+                                    borderColor: '#423538',
+                                    backgroundColor: '#b88c8c',
+
+                                },
+                                {
+                                    label: 'DERMATOLOGY', // name the series
+                                    data: [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                        0.0,
+                                        2.0, 3.0, 1.0, 3.0, 3.0
+                                    ],
+                                    lineTension: 0.1,
+                                    pointStyle: 'cross',
+                                    borderWidth: 1,
+                                    borderColor: '#423538',
+                                    backgroundColor: '#ddadad',
+
+
+
+                                },
+                                {
+                                    label: 'ENDOCRINOLOGY', // name the series
+                                    data: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 2.0, 0.0, 1.0,
+                                        2.0,
+                                        3.0, 2.0, 3.0, 8.0, 4.0
+                                    ],
+                                    lineTension: 0.1,
+                                    pointStyle: 'cross',
+                                    borderWidth: 1,
+                                    borderColor: '#423538',
+                                    backgroundColor: '#d6c7c7',
+
+
+
+                                },
+
+                                {
+                                    label: 'FAMILY MEDICINE', // name the series
+                                    data: [2.0, 1.0, 1.0, 0.0, 0.0, 3.0, 2.0, 2.0, 1.0, 2.0, 3.0, 5.0, 7.0,
+                                        7.0,
+                                        10.0, 13.0, 11.0, 10.0, 24.0
+                                    ],
+                                    lineTension: 0.1,
+                                    pointStyle: 'cross',
+                                    borderWidth: 1,
+                                    borderColor: '#423538',
+                                    backgroundColor: '#9fb9bf',
+
+
+
+                                },
+
+                                {
+                                    label: 'GASTROENTEROLOGY', // name the series
+                                    data: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 2.0, 0.0, 0.0, 0.0,
+                                        0.0,
+                                        1.0, 0.0, 1.0, 2.0, 0.0
+                                    ],
+                                    lineTension: 0.1,
+                                    pointStyle: 'cross',
+                                    borderWidth: 1,
+                                    borderColor: '#423538',
+                                    backgroundColor: '#aec8ce',
+
+
+
+                                },
+
+                                {
+                                    label: 'HEMATOLOGY', // name the series
+                                    data: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                        0.0,
+                                        0.0, 0.0, 0.0, 2.0, 3.0
+                                    ],
+                                    lineTension: 0.1,
+                                    pointStyle: 'cross',
+                                    borderWidth: 1,
+                                    borderColor: '#423538',
+                                    backgroundColor: '#fdf6f2',
+
+
+
+                                },
+                                {
+                                    label: 'HEPATOLOGY', // name the series
+                                    data: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0,
+                                        0.0,
+                                        1.0, 1.0, 1.0, 1.0, 3.0
+                                    ],
+                                    lineTension: 0.1,
+                                    pointStyle: 'cross',
+                                    borderWidth: 1,
+                                    borderColor: '#423538',
+                                    backgroundColor: '#c0d8e3',
+
+
+
+                                },
+
+                                {
+                                    label: 'IMMUNOLOGY ', // name the series
+                                    data: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0,
+                                        2.0,
+                                        0.0, 2.0, 2.0, 0.0, 1.0
+                                    ],
+                                    lineTension: 0.1,
+                                    pointStyle: 'cross',
+                                    borderWidth: 1,
+                                    borderColor: '#423538',
+                                    backgroundColor: '#a78d8a',
+
+
+
+                                },
+                                {
+                                    label: 'INFECTIONS AND INFECTIOUS DISEASES ', // name the series
+                                    data: [0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 3.0,
+                                        2.0,
+                                        6.0, 2.0, 5.0, 5.0, 3.0
+                                    ],
+                                    lineTension: 0.1,
+                                    pointStyle: 'cross',
+                                    borderWidth: 1,
+                                    borderColor: '#423538',
+                                    backgroundColor: '#e18a7a',
+
+                                },
+
+                                {
+                                    label: 'MUSCULOSKELETAL ', // name the series
+                                    data: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0,
+                                        2.0,
+                                        0.0, 0.0, 2.0, 1.0, 0.0
+                                    ],
+                                    lineTension: 0.1,
+                                    pointStyle: 'cross',
+                                    borderWidth: 1,
+                                    borderColor: '#423538',
+                                    backgroundColor: '#eeb9a2',
+
+                                },
+                                {
+                                    label: 'NEPHROLOGY ', // name the series
+                                    data: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0,
+                                        0.0,
+                                        0.0, 0.0, 1.0, 2.0, 1.0
+                                    ],
+                                    lineTension: 0.1,
+                                    pointStyle: 'cross',
+                                    borderWidth: 1,
+                                    borderColor: '#423538',
+                                    backgroundColor: '#ffe4e1',
+
+                                },
+                                {
+                                    label: 'NEUROLOGY ', // name the series
+                                    data: [0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 3.0, 2.0, 4.0, 2.0, 0.0,
+                                        1.0,
+                                        2.0, 4.0, 7.0, 6.0, 6.0
+                                    ],
+                                    lineTension: 0.1,
+                                    pointStyle: 'cross',
+                                    borderWidth: 1,
+                                    borderColor: '#423538',
+                                    backgroundColor: '#ebd5d5',
+
+                                },
+                                {
+                                    label: 'OBSTETRICS/GYNECOLOGY', // name the series
+                                    data: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0,
+                                        1.0,
+                                        0.0, 2.0, 2.0, 0.0, 0.0
+                                    ],
+                                    lineTension: 0.1,
+                                    pointStyle: 'cross',
+                                    borderWidth: 1,
+                                    borderColor: '#423538',
+                                    backgroundColor: '#f0f8ff',
+
+                                },
+                                {
+                                    label: 'ONCOLOGY ', // name the series
+                                    data: [0.0, 0.0, 1.0, 0.0, 2.0, 1.0, 2.0, 1.0, 2.0, 0.0, 4.0, 4.0, 7.0,
+                                        5.0,
+                                        5.0, 8.0, 4.0, 12.0, 9.0
+                                    ],
+                                    lineTension: 0.1,
+                                    pointStyle: 'cross',
+                                    borderWidth: 1,
+                                    borderColor: '#423538',
+                                    backgroundColor: '#e0eeee',
+
+
+                                },
+                                {
+                                    label: 'OPHTHALMOLOGY', // name the series
+                                    data: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0,
+                                        0.0,
+                                        0.0, 1.0, 1.0, 3.0, 0.0
+                                    ],
+                                    lineTension: 0.1,
+                                    pointStyle: 'cross',
+                                    borderWidth: 1,
+                                    borderColor: '#423538',
+                                    backgroundColor: '#c1ffc1',
+
+                                },
+                                {
+                                    label: 'OTOLARYNGOLOGY', // name the series
+                                    data: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0,
+                                        0.0,
+                                        0.0, 0.0, 0.0, 0.0, 0.0
+                                    ],
+                                    lineTension: 0.1,
+                                    pointStyle: 'cross',
+                                    borderWidth: 1,
+                                    borderColor: '#423538',
+                                    backgroundColor: '#ffe7e7',
+
+                                },
+                                {
+                                    label: 'PEDIATRICS/NEONATOLOGY', // name the series
+                                    data: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                        0.0,
+                                        0.0, 0.0, 0.0, 1.0, 0.0
+                                    ],
+                                    lineTension: 0.1,
+                                    pointStyle: 'cross',
+                                    borderWidth: 1,
+                                    borderColor: '#423538',
+                                    backgroundColor: '#fff0da',
+
+                                },
+
+                                {
+                                    label: 'PHARMACOLOGY/TOXICOLOGY', // name the series
+                                    data: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                        0.0,
+                                        0.0, 1.0, 0.0, 0.0, 0.0
+                                    ],
+                                    lineTension: 0.1,
+                                    pointStyle: 'cross',
+                                    borderWidth: 1,
+                                    borderColor: '#423538',
+                                    backgroundColor: '#ffffff',
+
+                                },
+
+                                {
+                                    label: 'PSYCHIATRY/PSYCHOLOGY', // name the series
+                                    data: [0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 3.0, 0.0, 0.0, 3.0, 0.0, 2.0, 0.0,
+                                        4.0,
+                                        1.0, 7.0, 0.0, 2.0, 2.0
+                                    ],
+                                    lineTension: 0.1,
+                                    pointStyle: 'cross',
+                                    borderWidth: 1,
+                                    borderColor: '#423538',
+                                    backgroundColor: '#f8f0e9',
+
+                                },
+                                {
+                                    label: 'PULMONARY/RESPIRATORY DISEASES', // name the series
+                                    data: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0,
+                                        2.0,
+                                        4.0, 2.0, 2.0, 0.0, 4.0
+                                    ],
+                                    lineTension: 0.1,
+                                    pointStyle: 'cross',
+                                    borderWidth: 1,
+                                    borderColor: '#423538',
+                                    backgroundColor: '#d9ffce',
+
+                                },
+                                {
+                                    label: 'UROLOGY', // name the series
+                                    data: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0,
+                                        0.0,
+                                        0.0, 0.0, 1.0, 0.0, 0.0
+                                    ],
+                                    lineTension: 0.1,
+                                    pointStyle: 'cross',
+                                    borderWidth: 1,
+                                    borderColor: '#423538',
+                                    backgroundColor: '#e6f0fa',
+
+                                },
+
+                            ]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: true,
+                            layout: {
+                                padding: {
+                                    left: 5,
+                                    right: 0,
+                                    top: 10,
+                                    bottom: 10
+                                }
+                            },
+                            legend: {
+                                position: 'right',
+                                labels: {
+                                    fontSize: 9,
+                                },
+
+                            },
+
+                            title: {
+                                display: true,
+                                text: 'Number of drugs approved by the FDA, per year, in each therapy area',
+                                fontSize: 16,
+                                fontFamily: "'Oxygen', sans-serif",
+                                fontColor: '#423538',
+
+                            },
+                            scales: {
+                                xAxes: [{
+                                    stacked: true
+                                }],
+                                yAxes: [{
+                                    stacked: true,
+                                    ticks: {
+                                        beginAtZero: true,
+
+                                    }
+
+                                }]
+                            }
+                        }
+                    });
+                </script>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-1 dropdown"></div>
+            <div class="col-sm-5 dropdown chartbg">
+                <canvas id="num_approved_a_year_by_top_ten_company" width="100%" height="100%"></canvas>
+                <script>
+                    var ctx = document.getElementById('num_approved_a_year_by_top_ten_company');
+                    var myChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: [2013, 2014, 2015, 2016, 2017],
+                            datasets: [{
+                                    label: 'ASTRAZENECA AB', // name the series
+                                    data: [0.0, 0.0, 0.0, 0.0, 3.0],
+                                    lineTension: 0.1,
+                                    pointStyle: 'cross',
+                                    borderWidth: 1,
+                                    borderColor: '#423538',
+                                    backgroundColor: '#b88c8c',
+
+                                },
+                                {
+                                    label: 'ASTRAZENECA PHARMS', // name the series
+                                    data: [0.0, 3.0, 0.0, 0.0, 0.0],
+                                    lineTension: 0.1,
+                                    pointStyle: 'cross',
+                                    borderWidth: 1,
+                                    borderColor: '#423538',
+                                    backgroundColor: '#ddadad',
+
+                                },
+                                {
+                                    label: 'BOEHRINGER INGELHEIM ', // name the series
+                                    data: [0.0, 3.0, 0.0, 0.0, 0.0],
+                                    lineTension: 0.1,
+                                    pointStyle: 'cross',
+                                    borderWidth: 1,
+                                    borderColor: '#423538',
+                                    backgroundColor: '#eeb9a2',
+
+
+                                },
+                                {
+                                    label: 'CUBIST PHARMS LLC', // name the series
+                                    data: [0.0, 3.0, 0.0, 0.0, 0.0],
+                                    lineTension: 0.1,
+                                    pointStyle: 'cross',
+                                    borderWidth: 1,
+                                    borderColor: '#423538',
+                                    backgroundColor: '#c1ffc1',
+
+                                },
+                                {
+                                    label: 'GILEAD SCIENCES INC', // name the series
+                                    data: [0.0, 0.0, 0.0, 4.0, 0.0],
+                                    lineTension: 0.1,
+                                    pointStyle: 'cross',
+                                    borderWidth: 1,
+                                    borderColor: '#423538',
+                                    backgroundColor: '#ffe7e7',
+
+                                },
+                                {
+                                    label: 'MERCK SHARP DOHME', // name the series
+                                    data: [0.0, 0.0, 0.0, 0.0, 3.0],
+                                    lineTension: 0.1,
+                                    pointStyle: 'cross',
+                                    borderWidth: 1,
+                                    borderColor: '#423538',
+                                    backgroundColor: '#fff0da',
+
+                                },
+
+                                {
+                                    label: 'NOVARTIS PHARMS CORP', // name the series
+                                    data: [0.0, 0.0, 3.0, 0.0, 3.0],
+                                    lineTension: 0.1,
+                                    pointStyle: 'cross',
+                                    borderWidth: 1,
+                                    borderColor: '#423538',
+                                    backgroundColor: '#ffffff',
+
+                                },
+
+                                {
+                                    label: 'SUNOVION PHARMS INC', // name the series
+                                    data: [0.0, 0.0, 2.0, 0.0, 0.0],
+                                    lineTension: 0.1,
+                                    pointStyle: 'cross',
+                                    borderWidth: 1,
+                                    borderColor: '#423538',
+                                    backgroundColor: '#f8f0e9',
+
+                                },
+                                {
+                                    label: 'TAKEDA PHARMS USA', // name the series
+                                    data: [4.0, 0.0, 0.0, 0.0, 0.0],
+                                    lineTension: 0.1,
+                                    pointStyle: 'cross',
+                                    borderWidth: 1,
+                                    borderColor: '#423538',
+                                    backgroundColor: '#d6c7c7',
+
+                                },
+                                {
+                                    label: 'UCB INC', // name the series
+                                    data: [0.0, 0.0, 0.0, 3.0, 0.0],
+                                    lineTension: 0.1,
+                                    pointStyle: 'cross',
+                                    borderWidth: 1,
+                                    borderColor: '#423538',
+                                    backgroundColor: '#e6f0fa',
+
+                                },
+
+
+
+                            ]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: true,
+                            layout: {
+                                padding: {
+                                    left: 5,
+                                    right: 0,
+                                    top: 10,
+                                    bottom: 10
+                                }
+                            },
+                            legend: {
+                                position: 'right',
+                                labels: {
+                                    fontSize: 9,
+                                },
+
+                            },
+
+                            title: {
+                                display: true,
+                                text: 'Number of drugs approved by the FDA, per year, for the top 10 companies based on number of approvals',
+                                fontSize: 16,
+                                fontFamily: "'Oxygen', sans-serif",
+                                fontColor: '#423538',
+
+                            },
+                            scales: {
+                                xAxes: [{
+                                    stacked: true
+                                }],
+                                yAxes: [{
+                                    stacked: true,
+                                    ticks: {
+                                        beginAtZero: true,
+
+                                    }
+
+                                }]
+                            }
+                        }
+                    });
+                </script>
+            </div>
+            <div class="col-sm-5 dropdown chartbg">
+                <canvas id="num_approved_in_therapy_area_by_top_ten_company" width="100%" height="100%"></canvas>
+                <script>
+                    var ctx = document.getElementById('num_approved_in_therapy_area_by_top_ten_company');
+                    var myChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: ['ENDOCRINOLOGY','FAMILY MEDICINE','INFECTIONS AND INFECTIOUS DISEASES','NEUROLOGY','ONCOLOGY','PSYCHIATRY/PSYCHOLOGY'],
+                            datasets: [{
+                                    label: 'ASTRAZENECA AB', // name the series
+                                    data: [7.0,0.0,0.0,0.0,0.0,0.0],
+                                    lineTension: 0.1,
+                                    pointStyle: 'cross',
+                                    borderWidth: 1,
+                                    borderColor: '#423538',
+                                    backgroundColor: '#b88c8c',
+
+                                },
+                                {
+                                    label: 'BAYER HLTHCARE', // name the series
+                                    data: [0.0,0.0,0.0,0.0,4.0,0.0],
+                                    lineTension: 0.1,
+                                    pointStyle: 'cross',
+                                    borderWidth: 1,
+                                    borderColor: '#423538',
+                                    backgroundColor: '#ddadad',
+
+                                },
+                                {
+                                    label: 'BOEHRINGER INGELHEIM ', // name the series
+                                    data: [0.0,3.0,0.0,0.0,0.0,0.0],
+                                    lineTension: 0.1,
+                                    pointStyle: 'cross',
+                                    borderWidth: 1,
+                                    borderColor: '#423538',
+                                    backgroundColor: '#eeb9a2',
+
+
+                                },
+                                {
+                                    label: 'CUBIST PHARMS LLC', // name the series
+                                    data: [0.0,0.0,4.0,0.0,0.0,0.0],
+                                    lineTension: 0.1,
+                                    pointStyle: 'cross',
+                                    borderWidth: 1,
+                                    borderColor: '#423538',
+                                    backgroundColor: '#c1ffc1',
+
+                                },
+                                {
+                                    label: 'GILEAD SCIENCES INC', // name the series
+                                    data: [0.0,0.0,6.0,0.0,0.0,0.0],
+                                    lineTension: 0.1,
+                                    pointStyle: 'cross',
+                                    borderWidth: 1,
+                                    borderColor: '#423538',
+                                    backgroundColor: '#ffe7e7',
+
+                                },
+                                {
+                                    label: 'NOVARTIS PHARMS CORP', // name the series
+                                    data: [0.0,3.0,0.0,0.0,6.0,0.0],
+                                    lineTension: 0.1,
+                                    pointStyle: 'cross',
+                                    borderWidth: 1,
+                                    borderColor: '#423538',
+                                    backgroundColor: '#fff0da',
+
+                                },
+
+                                {
+                                    label: 'NOVO', // name the series
+                                    data: [3.0,0.0,0.0,0.0,0.0,0.0],
+                                    lineTension: 0.1,
+                                    pointStyle: 'cross',
+                                    borderWidth: 1,
+                                    borderColor: '#423538',
+                                    backgroundColor: '#ffffff',
+
+                                },
+
+                                {
+                                    label: 'OTSUKA', // name the series
+                                    data: [0.0,0.0,0.0,0.0,0.0,4.0],
+                                    lineTension: 0.1,
+                                    pointStyle: 'cross',
+                                    borderWidth: 1,
+                                    borderColor: '#423538',
+                                    backgroundColor: '#f8f0e9',
+
+                                },
+                                {
+                                    label: 'SANOFI-AVENTIS US', // name the series
+                                    data: [3.0,0.0,0.0,0.0,0.0,0.0],
+                                    lineTension: 0.1,
+                                    pointStyle: 'cross',
+                                    borderWidth: 1,
+                                    borderColor: '#423538',
+                                    backgroundColor: '#d6c7c7',
+
+                                },
+                                {
+                                    label: 'UCB INC', // name the series
+                                    data: [0.0,0.0,0.0,6.0,0.0,0.0],
+                                    lineTension: 0.1,
+                                    pointStyle: 'cross',
+                                    borderWidth: 1,
+                                    borderColor: '#423538',
+                                    backgroundColor: '#e6f0fa',
+
+                                },
+
+
+
+                            ]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: true,
+                            layout: {
+                                padding: {
+                                    left: 5,
+                                    right: 0,
+                                    top: 10,
+                                    bottom: 10
+                                }
+                            },
+                            legend: {
+                                position: 'right',
+                                labels: {
+                                    fontSize: 9,
+                                },
+
+                            },
+
+                            title: {
+                                display: true,
+                                text: 'Number of drugs approved by the FDA, per therapy area, for the top 10 companies based on number of approvals',
+                                fontSize: 16,
+                                fontFamily: "'Oxygen', sans-serif",
+                                fontColor: '#423538',
+
+                            },
+                            scales: {
+                                xAxes: [{
+                                    stacked: true,
+                                    type: 'category',
+                                    labels: ['ENDOCRINOLOGY','FAMILY MEDICINE','INFECTIONS AND INFECTIOUS DISEASES','NEUROLOGY','ONCOLOGY','PSYCHIATRY/PSYCHOLOGY'],
+                                    ticks: {
+                                        beginAtZero: true,
+
+                                    }
+                                }],
+                                yAxes: [{
+                                    stacked: true,
+                                    ticks: {
+                                        beginAtZero: true,
+
+                                    }
+
+                                }]
+                            }
+                        }
+                    });
+                </script>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+</body>
+
+</html>

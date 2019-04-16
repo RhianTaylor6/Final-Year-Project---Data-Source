@@ -1,0 +1,168 @@
+/* My Project CSS file*/
+* {
+    margin: 0 auto;
+    padding: 0;
+    font-family: 'Oxygen', sans-serif;
+
+}
+
+body {
+    background-color: #726568;
+}
+
+h1 {
+    color: #423538;
+    text-transform: uppercase;
+    font-size: 70px;
+    text-align: center;
+    margin-top: 30px;
+
+}
+
+h2 {
+    color: #5A4D4F;
+    text-transform: uppercase;
+    font-size: 18px;
+    text-align: center;
+
+}
+
+h3 {
+    color: #726568;
+    font-size: 18px;
+    margin-left: 20px;
+
+}
+
+h4 {
+    color: #865f66;
+    font-size: 18px;
+    margin-left: 20px;
+
+}
+
+h5 {
+    color: #865f66;
+    font-size: 16px;
+
+}
+
+p {
+    font-family: 'Poppins', sans-serif;
+}
+
+.back-colour {
+    background-color: #726568;
+}
+
+
+.my-button {
+    border: 1px solid #423538;
+    padding: 10px 35px;
+    color: #423538;
+    margin-right: 5px;
+    font-size: 10px;
+
+
+}
+
+.my-button:hover {
+
+    background-color: #423538;
+    color: #a9a2a4;
+
+}
+
+.my-button2 {
+    border: 1px solid #a9a2a4;
+    padding: 10px 35px;
+    color: #a9a2a4;
+    margin-right: 5px;
+    font-size: 10px;
+
+
+}
+
+.my-button2:hover {
+
+    background-color: #a9a2a4;
+    color: #423538;
+
+}
+
+.card-text {
+    color: #423538;
+    padding: 2%;
+    font-size: 16px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.dropdown {
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.login-container {
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.login-form {
+    padding: 9%;
+    background: #a9a2a4;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+
+.register-form {
+    padding: 9%;
+    background: #423538;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+
+.box-container-thing {
+
+    background: #a9a2a4;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+    height: 450px;
+    padding: 2%;
+
+}
+
+.card {
+    background: #a9a2a4;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+
+.navbar {
+    background: #a9a2a4;
+}
+
+a{
+    color:  #865f66;
+}
+
+a:hover{
+    color:#dfd2d5;
+}
+
+.how-section1{
+    margin-top:-15%;
+    padding: 10%;
+}
+
+.how-section1 .row
+{
+    margin-top: 10%;
+}
+.how-img 
+{
+    text-align: center;
+}
+.how-img img{
+    width: 40%;
+}
+.chartbg{
+    background-color:  #dfd2d5
+}

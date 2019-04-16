@@ -1,0 +1,145 @@
+<!Doctype html>
+<html>
+<!--My Current homepage-->
+<head>
+    <title>Practice Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/js/bootstrap.min.js" integrity="sha384-7aThvCh9TypR7fIc2HV4O/nFMVCBwyIUKL8XCtKE+8xgCgl/PQGuFsvShjr74PBp"
+        crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Oxygen|Poppins" rel="stylesheet">
+    <link href="practice.css" rel="stylesheet" type="text/css">
+
+
+</head> 
+
+<body>
+    <div class="container-fluid">
+        <div class="row back-colour">
+            <div class="col-sm-12">
+                <h1>DataSource</h1>
+            </div>
+        </div>
+        <div class="row back-colour">
+            <div class="col-sm-12">
+                <h2>The drug approval date dashboard</h2>
+            </div>
+        </div>
+        <div class="row back-colour">
+            <div class="col-sm-12">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <a class="navbar-brand" href="#"></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+                            <a class="nav-item nav-link active" href="practice.html">Home <span class="sr-only">(current)</span></a>
+                            <a class="nav-item nav-link" href="practicefeatures.html">Features</a>
+                            <a class="nav-item nav-link" href="practiceinformation.html">Information</a>
+                            <a class="nav-item nav-link" href="practicecontacts.html">Contact</a>
+                        </div>
+                    </div>
+                </nav>
+
+            </div>
+        </div>
+        <div class="container login-container">
+            <div class="row">
+                <div class="col-md-6 login-form" id="login-form">
+                    <h2>Login</h2>
+                    <form action="/login" method="POST">
+                    
+                            <input type="email" class="form-control form-group" name="email-login" placeholder="E-mail" value="" />
+            
+                            <input type="password" class="form-control form-group" name="password-login" placeholder="Password" value="" />
+
+                            <div class="form-group"><p class="alert alert-danger">Failed login attempt. Please try again!</p></div>
+            
+                            <!--<input type="submit" class="btnSubmit" value="Login" />-->
+                            <button class="form-group btn btn-sm my-button"  id="login-button">Login</button>
+
+                            <a class="form-group" href="#"><p>Forgotten password? </p></a>
+                            <p class="register form-group"> Not Registered? <a href="#" onclick="showRegister()"> Register </a></p>
+                       
+                    </form>
+                </div>
+                <div class="col-md-6 register-form collapse" id="register-form" >
+                    <h2>Register</h2>
+                    <form action="/register" method="POST">
+                        <input type="text" class="form-control form-group" name="f_name" placeholder="First Name" required minlength="2" maxlength="20" value="ab" />
+
+                        <input type="text" class="form-control form-group" name="l_name" placeholder="Last Name" required minlength="2" maxlength="20" value="ab" />
+
+                        <input type="email" class="form-control form-group" name="email" placeholder="Email" required value="a@a.com"/>
+
+                        <input type="password" class="form-control form-group" name="password" id="pass1" onkeyup="checkPasswordMatch();" placeholder="Password" required minlength="6" maxlength="12"value="abc123"/>
+
+                        <input type="password" class="form-control form-group"   name="c-password" id="pass2" onkeyup="checkPasswordMatch();" placeholder="Confirm Password" required minlength="6" maxlength="12"value="abc123" />
+                        
+                        <div class=" collapse form-group" id="divCheckPasswordMatch"><p class="alert alert-danger">Passwords do not match</p></div>
+
+                        <input type="text" class="form-control form-group" name="company" placeholder="Company" required minlength="2" maxlength="20" value="ab"/>
+
+                        <button class="form-group btn btn-sm my-button2 " id="register-button" >Register</button>
+                        <!--<input type="submit" class="btnSubmit" value="Register" />-->
+
+                        <p class="register form-group">Already Registered? <a href="#" onclick="showLogin()"> Login </a></p>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+            function checkPasswordMatch() {
+        var password = $("#pass1").val();
+        var confirmPassword = $("#pass2").val();
+
+        if (password != confirmPassword || confirmPassword != password){
+            $("#divCheckPasswordMatch").removeClass("collapse").addClass("expand");
+            $("#register-button").prop('disabled',true);
+        }
+        else{
+            $("#divCheckPasswordMatch").removeClass("expand").addClass("collapse");
+            $("#register-button").prop('disabled',false);
+        }
+
+    }
+    
+    </script>
+       
+    <script>
+         function showRegister(){
+            $("#register-form").removeClass("collapse").addClass("expand");
+            
+        }
+    
+    </script>
+
+<script>
+        function showLogin(){
+           $("#login-form").removeClass("collapse").addClass("expand");
+           $("#register-form").removeClass("expand").addClass("collapse");
+       }
+   
+   </script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".close").click(function(){
+            $("#myAlert").alert('close');
+        });
+    });  
+    </script>
+    
+</body>
+
+</html>
