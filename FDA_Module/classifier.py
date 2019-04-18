@@ -88,9 +88,9 @@ for Therapy_area, therapy_area_id in sorted(therapy_to_id.items()):
   feature_names = np.array(tfidf.get_feature_names())[indices]
   unigrams = [v for v in feature_names if len(v.split(' ')) == 1]
   bigrams = [v for v in feature_names if len(v.split(' ')) == 2]
-  #print("# '{}':".format(Therapy_area))
-  #print("  . Most correlated unigrams:\n. {}".format('\n. '.join(unigrams[-N:])))
-  #print("  . Most correlated bigrams:\n. {}".format('\n. '.join(bigrams[-N:])))
+  print("# '{}':".format(Therapy_area))
+  print("  . Most correlated unigrams:\n. {}".format('\n. '.join(unigrams[-N:])))
+  print("  . Most correlated bigrams:\n. {}".format('\n. '.join(bigrams[-N:])))
 
       #Fitting training set LOGISTIC REGRESSION
 X_train, X_test, y_train, y_test = train_test_split(treatments['treatment'], treatments['Therapy_area'], random_state = 0)
@@ -113,7 +113,7 @@ with open('FDA_Module/therapeuticGroups.csv', mode='w') as FDA_file:
         
     for index, row in use_codes.iterrows():
         tarea = clf.predict(count_vect.transform([row.Use]))
-        print(use_codes[' Use Code'][index], row.Use, tarea)
+        #print(use_codes[' Use Code'][index], row.Use, tarea)
         use_writer.writerow([use_codes[' Use Code'][index], row.Use, tarea])
 
     #model selection
@@ -135,4 +135,4 @@ for model in models:
     entries.append((model_name, fold_idx, accuracy))
 cv_df = pd.DataFrame(entries, columns=['model_name', 'fold_idx', 'accuracy'])
 
-cv_df.groupby('model_name').accuracy.mean()
+print(cv_df.groupby('model_name').accuracy.mean())
