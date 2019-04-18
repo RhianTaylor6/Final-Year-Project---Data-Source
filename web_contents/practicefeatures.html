@@ -78,8 +78,8 @@
             <div class="col-sm-4">
                 <div class="card" class="rounded shadow-sm p-3 mb-5 bg-white rounded">
                     <div class="card-body">
-                        <h3 class="card-title">Data Storage</h3>
-                        <p class="card-text">PostregeSQL database.</p>
+                        <h3 class="card-title">Data Classification</h3>
+                        <p class="card-text">Natural Language Processing</p>
                         <button class="btn btn-sm my-button" type="button" data-toggle="collapse" data-target="#data-storage"
                             aria-expanded="false" aria-pressed="false" aria-controls="multiCollapseExample2">More
                             information...</button>
@@ -105,7 +105,11 @@
                 <div class="collapse multi-collapse dropdown" id="data-gathering">
                     <div class="card card-body card-customise1" class="rounded">
                         <h4 class="card-title">Data Gathering</h4>
-                        <p>Filler Text</p>
+                        <p>For the data gathering portion of the project there were to main aspects;</p>
+
+                         <p>  1.	Gathering the data from website through web-scraping.</p>
+                        <p>  2.	Working with the gathered data to create a complete dataset for the visualisation aspect of the system.
+                            </p>
                         <video class="vid1" width="320" height="240" controls>
                             <source src="pageExtractDemo.mp4" type="video/mp4" alt="python code">
                         </video>
@@ -114,16 +118,18 @@
                 </div>
                 <div class="collapse multi-collapse dropdown" id="data-storage">
                     <div class="card card-body card-customise1" class="rounded">
-                        <h4 class="card-title">Data Storage</h4>
-                        <p>Filler Text</p>
-                        <img class="post-img" src="postgres.png" alt="postrgresql logo" width="320" height="240">
+                        <h4 class="card-title">Data Classification</h4>
+                        <p>A Classification model was created using the descriptions of treatments and the associated therapy groups (class) was used as the basis for the training set. Each therapy group was given an ID and the treatment descriptions were vectorised to get the term frequency and inverse document frequency to create features of each therapy group. The model then applied this “knowledge” to the use cases descriptions and assigned each one the therapeutic group with the best fit. </p>
+                        
 
                     </div>
                 </div>
                 <div class="collapse multi-collapse dropdown" id="data-visualisation">
                     <div class="card card-body card-customise1" class="rounded">
                         <h4 class="card-title">Data Visualisation</h4>
-                        <p>Filler Text</p>
+                            <p>Chart.js takes data input and creates interactive graphs that can be displayed on websites. 
+                            This library was utilised to ease this portion of development and to create consistent, good quality, interactive visualisations of the data collected by the system.</p>
+                            <p> Each chart displayed on the website was created using this library by specifying a chart type e.g line or bar, then the relevant data was inputted, and additional visual aspects were adjusted such as bar colour and line tension.</p>
                         <video class="vid1" width="320" height="240" controls>
                             <source src="chartjsDemo.mp4" type="video/mp4" alt="Chart JS">
                         </video>
