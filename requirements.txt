@@ -21,7 +21,7 @@ idna==2.7
 itsdangerous==1.1.0
 Jinja2==2.10
 lxml==4.2.5
-Mako==1.0.7
+Mako==1.2.2
 MarkupSafe==1.1.0
 more-itertools==4.3.0
 nltk==3.3
